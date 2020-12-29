@@ -21,7 +21,6 @@ class CreateAsosTable extends Migration
             $table->bigInteger('employee_id')->unsigned();
             $table->bigInteger('doctor_id')->unsigned()->nullable();
             $table->bigInteger('conclusion_id')->unsigned()->nullable();
-            $table->bigInteger('service_id')->unsigned();
             $table->string('workplace', 150);
             $table->string('post', 150);
             $table->mediumText('physicist')->nullable();
@@ -58,11 +57,6 @@ class CreateAsosTable extends Migration
 
             $table->foreign('conclusion_id')->references('id')
             ->on('conclusions')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
-
-            $table->foreign('service_id')->references('id')
-            ->on('services')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });

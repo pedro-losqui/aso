@@ -15,18 +15,13 @@ class CreateInputsTable extends Migration
     {
         Schema::create('inputs', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('service_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
+            $table->string('type', 30);
             $table->string('employee', 150);
             $table->string('company', 150);
             $table->string('allocation', 8);
             $table->string('status', 25);
             $table->timestamps();
-
-            $table->foreign('service_id')->references('id')
-            ->on('services')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
 
             $table->foreign('user_id')->references('id')
             ->on('users')
