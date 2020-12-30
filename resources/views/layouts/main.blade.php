@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="page-footer">
-                    <p>{{ date('Y') }} &copy; Gesto v3.0</p>
+                    <p>{{ date('Y') }} &copy; Gesto </span><span class="badge badge-info">v3.0.0</span></p>
                 </div>
             </div>
             
@@ -82,6 +82,7 @@
     <script src="{{ asset('assets/plugins/switchery/switchery.min.js') }}"></script>
     <script src="{{ asset('assets/js/pagekit.min.js') }}"></script>
     <livewire:scripts />
+    <script src="{{ asset('assets/js/modal.js') }}"></script>
 </body>
 
 </html>

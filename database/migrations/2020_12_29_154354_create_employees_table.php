@@ -17,7 +17,7 @@ class CreateEmployeesTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->string('cpf', 20)->unique();
-            $table->string('employee_name', 150);
+            $table->string('name', 150);
             $table->date('born_date');
             $table->string('gender', 20);
             $table->timestamps();

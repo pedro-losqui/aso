@@ -22,7 +22,11 @@ class EmployeeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id'   =>    1,
+            'cpf'       =>    $this->faker->creditCardNumber,
+            'name'      =>    $this->faker->name,
+            'born_date' =>    $this->faker->date,
+            'gender'    =>    $this->faker->titleMale,
         ];
     }
 }

@@ -181,6 +181,7 @@ return [
         'year'      => 'ano',
         'description' => 'descrição',
         'password_confirmation' => 'confirmação da senha',
+        'born_date' => 'data de nascimento',
     ],
 
 ];
