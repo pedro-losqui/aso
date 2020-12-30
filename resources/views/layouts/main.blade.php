@@ -32,7 +32,7 @@
         </div>
 
         <div class="settings-overlay"></div>
-        
+
         <div class="page-content">
             <div class="secondary-sidebar">
                 <div class="secondary-sidebar-bar">
@@ -58,31 +58,37 @@
                     </div>
                 </nav>
             </div>
-            
+
             <div class="page-inner no-page-title">
                 <div id="main-wrapper">
 
                     @yield('content')
-                
+
                 </div>
 
                 <div class="page-footer">
-                    <p>{{ date('Y') }} &copy; Gesto </span><span class="badge badge-info">v3.0.0</span></p>
+                    <p>{{ date('Y') }} &copy; Gesto </span><span
+                            class="badge badge-info">v3.0.0</span></p>
                 </div>
             </div>
-            
+
         </div>
     </div>
 
     <script src="{{ asset('assets/plugins/jquery/jquery-3.1.0.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/bootstrap/popper.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery.mask.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/form-masking-custom.js') }}"></script>
     <script src="{{ asset('assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}">
     </script>
+    <script src="{{ asset('assets/plugins/mask/jquery.mask.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/switchery/switchery.min.js') }}"></script>
     <script src="{{ asset('assets/js/pagekit.min.js') }}"></script>
     <livewire:scripts />
-    <script src="{{ asset('assets/js/modal.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/modal.js') }}"></script>
+
+
 </body>
 
 </html>

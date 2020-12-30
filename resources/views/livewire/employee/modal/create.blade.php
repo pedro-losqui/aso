@@ -13,7 +13,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="">CPF</label>
-                            <input type="text" wire:model='cpf' class="form-control" placeholder="000.000.000-00">
+                            <input type="text" id="cpf" wire:model='cpf' class="form-control" data-mask="000.000.000-00" placeholder="000.000.000-00" >
                             @error('cpf')
                                 <span class="badge badge-danger mt-2" style="font-size: 11px">{{ $message }}</span>
                             @enderror
