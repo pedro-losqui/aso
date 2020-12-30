@@ -26,6 +26,7 @@ class EmployeeView extends Component
     {
         return view('livewire.employee.employee-view', [
             'employees' => Employee::where('name', 'LIKE', "%{$this->busca}%")
+            ->orWhere('cpf', 'LIKE', "%{$this->busca}%")
             ->orderBy('id', 'DESC')
             ->paginate(10)
         ]);

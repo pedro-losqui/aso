@@ -1,7 +1,7 @@
 <div>
 
-    @include('livewire.employee.modal.create')
-    @include('livewire.employee.modal.edit')
+    @include('livewire.company.modal.create')
+    @include('livewire.company.modal.edit')
 
     <div class="row">
         <div class="col-sm">
@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <div class="input-group">
                         <input type="text" wire:model='busca' class="form-control search-input"
-                            placeholder="Buscar colaborador...">
+                            placeholder="Buscar empresa...">
                         @if($busca)
                             <div class="input-group-append">
                                 <button class="btn btn-primary" wire:click='clear' type="button" id="button-addon1"><i
@@ -24,8 +24,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="input-group">
-                        <button type="button" wire:click='default' data-toggle="modal" data-target=".createEmployee"
-                            class="btn btn-success btn-lg btn-block"><i class="fas fa-user mr-2"></i> Adicionar</button>
+                        <button type="button" wire:click='default' data-toggle="modal" data-target=".createCompany"
+                            class="btn btn-success btn-lg btn-block"><i class="fas fa-building mr-2"></i> Adicionar</button>
                     </div>
                 </div>
             </div>
@@ -38,26 +38,26 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Listagem de colaboradores:  <span class="badge badge-pill badge-success"><strong>{{ $employees->count() }}</strong></span> registro(s)</h5>
+                    <h5 class="card-title">Listagem de empresas:  <span class="badge badge-pill badge-success"><strong>{{ $companies->count() }}</strong></span> registro(s)</h5>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col" style="width: 2cm">#ID</th>
-                                    <th scope="col">Colaborador</th>
-                                    <th scope="col">CPF</th>
+                                    <th scope="col">Razão social</th>
+                                    <th scope="col">CNPJ</th>
                                     <th scope="col" style="width: 3cm">Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($employees as $item)
+                                @forelse($companies as $item)
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->cpf }}</td>
+                                        <td>{{ $item->cnpj }}</td>
                                         <td>
                                             <button type="button" wire:click='edit({{ $item->id }})'
-                                                data-toggle="modal" data-target=".editEmployee"
+                                                data-toggle="modal" data-target=".editCompany"
                                                 class="btn btn-primary btn-sm"><i class="fas fa-pen-alt"></i></button>
                                             <button type="button" wire:click='delete({{ $item->id }})'
                                                 class="btn btn-secondary btn-sm"><i

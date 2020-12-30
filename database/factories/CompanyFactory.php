@@ -22,7 +22,9 @@ class CompanyFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id'   => 1, 
+            'cnpj'      => $this->faker->ean13,
+            'name'      => $this->faker->company,
         ];
     }
 }
