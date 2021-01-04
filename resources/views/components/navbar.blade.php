@@ -13,7 +13,7 @@
             <li><a href="{{ route('company') }}">Empresa</a></li>
             <li><a href="{{ route('people') }}">Pessoa Física</a></li>
             <li><a href="{{ route('medic') }}">Médico</a></li>
-            <li><a href="#">Exame</a></li>
+            <li><a href="{{ route('exam') }}">Exame</a></li>
             <li><a href="#">Parecer</a></li>
             <li><a href="#">Usuário</a></li>
         </ul>
