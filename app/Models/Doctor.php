@@ -10,6 +10,6 @@ class Doctor extends Model
     use HasFactory;
     
     protected $fillable = [
-        'name', 'email', 'password',
+        'user_id', 'name', 'crm', 'uf'
     ];
 }

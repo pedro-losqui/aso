@@ -22,7 +22,10 @@ class DoctorFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id'   =>    1,
+            'name'      =>    $this->faker->name,
+            'crm'       =>    $this->faker->ean8,
+            'uf'        =>    $this->faker->stateAbbr,
         ];
     }
 }

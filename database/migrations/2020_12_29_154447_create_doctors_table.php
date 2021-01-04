@@ -17,7 +17,7 @@ class CreateDoctorsTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->string('name', 150);
-            $table->string('crm', 15);
+            $table->string('crm', 15)->unique();
             $table->string('uf', 2);
             $table->timestamps();
 
