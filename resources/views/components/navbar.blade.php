@@ -11,7 +11,7 @@
         <ul class="sub-menu">
             <li><a href="{{ route('employee') }}">Colaborador</a></li>
             <li><a href="{{ route('company') }}">Empresa</a></li>
-            <li><a href="#">Pessoa Física</a></li>
+            <li><a href="{{ route('people') }}">Pessoa Física</a></li>
             <li><a href="#">Médico</a></li>
             <li><a href="#">Exame</a></li>
             <li><a href="#">Parecer</a></li>

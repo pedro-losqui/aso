@@ -80,7 +80,9 @@ return [
         'numeric' => 'O campo :attribute não pode ser superior a :max.',
         'file'    => 'O campo :attribute não pode ser superior a :max kilobytes.',
         'string'  => 'O campo :attribute não pode ser superior a :max caracteres.',
-        'array'   => 'O campo :attribute não pode ter mais do que :max itens.',
+        'array'   => 'O campo :attribute não pode ter mais do que :max itens.'
+
+
     ],
     'mimes'                => 'O campo :attribute deve ser um arquivo do tipo: :values.',
     'mimetypes'            => 'O campo :attribute deve ser um arquivo do tipo: :values.',
@@ -113,7 +115,7 @@ return [
     'starts_with'          => 'O campo :attribute deve começar com um dos seguintes valores: :values',
     'string'               => 'O campo :attribute deve ser uma string.',
     'timezone'             => 'O campo :attribute deve ser uma zona válida.',
-    'unique'               => 'O campo :attribute já está sendo utilizado.',
+    'unique'               => 'Este :attribute já está sendo utilizado.',
     'uploaded'             => 'Ocorreu uma falha no upload do campo :attribute.',
     'url'                  => 'O campo :attribute tem um formato inválido.',
     'uuid' => 'O campo :attribute deve ser um UUID válido.',

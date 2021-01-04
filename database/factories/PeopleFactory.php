@@ -22,7 +22,9 @@ class PeopleFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id'   =>    1,
+            'cpf'       =>    $this->faker->creditCardNumber,
+            'name'      =>    $this->faker->name,
         ];
     }
 }

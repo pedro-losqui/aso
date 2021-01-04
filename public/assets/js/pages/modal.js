@@ -13,6 +13,13 @@ window.livewire.on('companyStore', () => {
     }, 2000);
 });
 
+window.livewire.on('peopleStore', () => {
+    $('.createPeople').modal('hide');
+    setTimeout(function () {
+        $('.alert-success').fadeOut();
+    }, 2000);
+});
+
 // Update
 window.livewire.on('employeeUpdate', () => {
     $('.editEmployee').modal('hide');
@@ -28,6 +35,13 @@ window.livewire.on('companyUpdate', () => {
     }, 2000);
 });
 
+window.livewire.on('peopleUpdate', () => {
+    $('.editPeople').modal('hide');
+    setTimeout(function () {
+        $('.alert-warning').fadeOut();
+    }, 2000);
+});
+
 //Delete
 window.livewire.on('employeeDelete', () => {
     setTimeout(function () {
@@ -36,6 +50,12 @@ window.livewire.on('employeeDelete', () => {
 });
 
 window.livewire.on('companyDelete', () => {
+    setTimeout(function () {
+        $('.alert-danger').fadeOut();
+    }, 2000);
+});
+
+window.livewire.on('peopleDelete', () => {
     setTimeout(function () {
         $('.alert-danger').fadeOut();
     }, 2000);
