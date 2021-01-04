@@ -34,6 +34,13 @@ window.livewire.on('examStore', () => {
     }, 2000);
 });
 
+window.livewire.on('conclusionStore', () => {
+    $('.createConclusion').modal('hide');
+    setTimeout(function () {
+        $('.alert-success').fadeOut();
+    }, 2000);
+});
+
 // Update
 window.livewire.on('employeeUpdate', () => {
     $('.editEmployee').modal('hide');
@@ -70,6 +77,13 @@ window.livewire.on('examUpdate', () => {
     }, 2000);
 });
 
+window.livewire.on('conclusionUpdate', () => {
+    $('.editConclusion').modal('hide');
+    setTimeout(function () {
+        $('.alert-warning').fadeOut();
+    }, 2000);
+});
+
 //Delete
 window.livewire.on('employeeDelete', () => {
     setTimeout(function () {
@@ -96,6 +110,12 @@ window.livewire.on('medicDelete', () => {
 });
 
 window.livewire.on('examDelete', () => {
+    setTimeout(function () {
+        $('.alert-danger').fadeOut();
+    }, 2000);
+});
+
+window.livewire.on('conclusionDelete', () => {
     setTimeout(function () {
         $('.alert-danger').fadeOut();
     }, 2000);

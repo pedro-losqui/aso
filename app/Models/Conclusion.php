@@ -10,6 +10,6 @@ class Conclusion extends Model
     use HasFactory;
     
     protected $fillable = [
-        'name', 'email', 'password',
+        'user_id', 'description'
     ];
 }
