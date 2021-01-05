@@ -52,6 +52,7 @@ class ConclusionView extends Component
         $conclusion->update($data);
         session()->flash('update', 'Parecer '. $conclusion->description . ' foi atualizado com sucesso ;)');
         $this->emit('conclusionUpdate');
+        $this->default();
     }
 
     public function delete($id)

@@ -58,6 +58,7 @@ class MedicView extends Component
         $medic->update($data);
         session()->flash('update', 'Médico(a) '. $medic->name . ' foi atualizado com sucesso ;)');
         $this->emit('medicUpdate');
+        $this->default();
     }
 
     public function delete($id)

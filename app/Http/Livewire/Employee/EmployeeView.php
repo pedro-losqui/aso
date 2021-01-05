@@ -64,6 +64,7 @@ class EmployeeView extends Component
         $employee->update($data);
         session()->flash('update', 'Colaborador(a) '. $employee->name . ' foi atualizado com sucesso ;)');
         $this->emit('employeeUpdate');
+        $this->default();
     }
 
     public function delete($id)

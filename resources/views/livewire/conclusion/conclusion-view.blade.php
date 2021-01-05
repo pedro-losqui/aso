@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="input-group">
                         <button type="button" wire:click='default' data-toggle="modal" data-target=".createConclusion"
-                            class="btn btn-success btn-lg btn-block"><i class="fas fa-user mr-2"></i> Adicionar</button>
+                            class="btn btn-success btn-lg btn-block"><i class="fas fa-edit mr-2"></i> Adicionar</button>
                     </div>
                 </div>
             </div>

@@ -52,6 +52,7 @@ class ExamView extends Component
         $exam->update($data);
         session()->flash('update', 'Exame '. $exam->description . ' foi atualizado com sucesso ;)');
         $this->emit('examUpdate');
+        $this->default();
     }
 
     public function delete($id)

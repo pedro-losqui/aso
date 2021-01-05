@@ -59,6 +59,7 @@ class CompanyView extends Component
         $company->update($data);
         session()->flash('update', 'Empresa '. $company->name . ' foi atualizada com sucesso ;)');
         $this->emit('companyUpdate');
+        $this->default();
     }
 
     public function delete($id)

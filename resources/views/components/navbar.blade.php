@@ -15,7 +15,7 @@
             <li><a href="{{ route('medic') }}">Médico</a></li>
             <li><a href="{{ route('exam') }}">Exame</a></li>
             <li><a href="{{ route('conclusion') }}">Parecer</a></li>
-            <li><a href="#">Usuário</a></li>
+            <li><a href="{{ route('user') }}">Usuário</a></li>
         </ul>
     </li>
     <li class="active-page">

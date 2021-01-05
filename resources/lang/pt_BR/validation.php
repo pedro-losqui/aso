@@ -118,7 +118,7 @@ return [
     'unique'               => 'Este :attribute já está sendo utilizado.',
     'uploaded'             => 'Ocorreu uma falha no upload do campo :attribute.',
     'url'                  => 'O campo :attribute tem um formato inválido.',
-    'uuid' => 'O campo :attribute deve ser um UUID válido.',
+    'uuid'                 => 'O campo :attribute deve ser um UUID válido.',
 
     /*
     |--------------------------------------------------------------------------
@@ -170,6 +170,7 @@ return [
         'neighborhood' => 'bairro',
         'number'    => 'número',
         'password'  => 'senha',
+        'password_confirm'  => 'confirmação de senha',
         'phone'     => 'telefone',
         'second'    => 'segundo',
         'sex'       => 'sexo',
@@ -181,6 +182,7 @@ return [
         'title'     => 'título',
         'username'  => 'usuário',
         'year'      => 'ano',
+        'post'      => 'setor',
         'description' => 'descrição',
         'password_confirmation' => 'confirmação da senha',
         'born_date' => 'data de nascimento',

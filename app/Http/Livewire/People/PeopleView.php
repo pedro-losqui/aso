@@ -56,6 +56,7 @@ class PeopleView extends Component
         $people->update($data);
         session()->flash('update', 'Pessoa física '. $people->name . ' foi atualizada com sucesso ;)');
         $this->emit('peopleUpdate');
+        $this->default();
     }
 
     public function delete($id)
