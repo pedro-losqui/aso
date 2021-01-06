@@ -10,3 +10,4 @@ Route::get('/medic',            'Main\MedicController@index')->name('medic');
 Route::get('/exam',             'Main\ExamController@index')->name('exam');
 Route::get('/conclusion',       'Main\ConclusionController@index')->name('conclusion');
 Route::get('/user',             'Main\UserController@index')->name('user');
+Route::get('/asoj',             'Main\AsoJController@index')->name('asoj');

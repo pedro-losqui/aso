@@ -88,7 +88,6 @@
     <livewire:scripts />
     <script src="{{ asset('assets/js/pages/modal.js') }}"></script>
 
-
 </body>
 
 </html>

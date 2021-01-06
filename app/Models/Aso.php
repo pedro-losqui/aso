@@ -10,6 +10,6 @@ class Aso extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'user_id', 'company_id', 'people_id', 'employee_id', 'doctor_id', 'conclusion_id', 'workplace', 'post', 'physicist', 'chemical', 'biological', 'ergonomic', 'accident'
     ];
 }

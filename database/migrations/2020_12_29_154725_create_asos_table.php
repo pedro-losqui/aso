@@ -16,6 +16,7 @@ class CreateAsosTable extends Migration
         Schema::create('asos', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
+            $table->string('type', 50);
             $table->bigInteger('company_id')->unsigned()->nullable();
             $table->bigInteger('people_id')->unsigned()->nullable();
             $table->bigInteger('employee_id')->unsigned();
