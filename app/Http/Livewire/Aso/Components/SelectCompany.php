@@ -45,5 +45,6 @@ class SelectCompany extends Component
         $this->busca     = '';
         $this->cnpj      = '';
         $this->companies = '';
+        $this->emit('selectCompanyClear', null);
     }
 }

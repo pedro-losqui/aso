@@ -1,11 +1,11 @@
 <div>
     <div wire:ignore.self class="modal fade createEmployeeAso" tabindex="-1" role="dialog"
         aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalCenterTitle">Registro colaborador</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close"  wire:click='close' aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>

@@ -12,7 +12,7 @@ class AsoJView extends Component
 
     public $type, $company_id, $employee_id, $doctor_id, $conclusion_id, $workplace, $post, $physicist, $chemical, $biological, $ergonomic, $accident;
 
-    protected $listeners = ['selectCompany', 'selectEmployee', 'selectConclusion'];
+    protected $listeners = ['selectCompany', 'selectEmployee', 'selectConclusion', 'selectCompanyClear', 'selectEmployeeClear'];
 
     protected $rules = [
         'type'          => 'required|string',
@@ -38,12 +38,17 @@ class AsoJView extends Component
         ]);
     }
 
-    public function storeAso()
+    public function store()
     {
         dd($this->validate());
     }
 
     public function selectCompany($id)
+    {
+        $this->company_id = $id;
+    }
+    
+    public function selectCompanyClear($id)
     {
         $this->company_id = $id;
     }
@@ -53,6 +58,12 @@ class AsoJView extends Component
         $this->employee_id = $id;
     }
 
+    public function selectEmployeeClear($id)
+    {
+        $this->employee_id = $id;
+    }
+
+
     public function selectConclusion($id)
     {
         $this->conclusion_id = $id;
@@ -60,6 +71,18 @@ class AsoJView extends Component
 
     public function default()
     {
+        $this->type             = '';
+        $this->company_id       = '';
+        $this->employee_id      = '';
+        $this->doctor_id        = '';
+        $this->conclusion_id    = '';
+        $this->workplace        = '';
+        $this->post             = ''; 
+        $this->physicist        = '';
+        $this->chemical         = ''; 
+        $this->biological       = '';
+        $this->ergonomic        = '';
+        $this->accident         = '';
     }
 
     public function clear()

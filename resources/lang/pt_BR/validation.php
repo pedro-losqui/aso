@@ -149,6 +149,11 @@ return [
     */
 
     'attributes' => [
+        'type'          => 'tipo de atendimento',
+        'company_id'    => 'empresa',
+        'employee_id'   => 'colaborador',
+        'workplace' => 'ambiente de trabalho',
+        'post'      => 'função',          
         'address'   => 'endereço',
         'age'       => 'idade',
         'body'      => 'conteúdo',

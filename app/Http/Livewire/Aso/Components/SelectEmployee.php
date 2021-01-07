@@ -45,5 +45,6 @@ class SelectEmployee extends Component
         $this->busca     = '';
         $this->cpf       = '';
         $this->employees = '';
+        $this->emit('selectEmployeeClear', null);
     }
 }

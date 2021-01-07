@@ -137,7 +137,9 @@
                             </div>
                         </div>
 
-                        <br />
+                        <div class="form-group">
+                            <livewire:aso.components.exam-create />
+                        </div>
 
                         <div class="form-group">
                             <livewire:aso.components.select-conclusion />
@@ -147,7 +149,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" wire:click='storeAso'>Salvar</button>
+                    <button type="button" class="btn btn-info" wire:click='default'>Limpar</button>
+                    <button type="button" class="btn btn-primary" wire:click='store'>Salvar</button>
                 </div>
             </div>
         </div>

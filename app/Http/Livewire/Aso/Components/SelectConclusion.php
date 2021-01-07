@@ -15,7 +15,7 @@ class SelectConclusion extends Component
     {
         $this->selectConclusion($this->conclusion_id);
     }
-
+    
     public function render()
     {
         return view('livewire.aso.components.select-conclusion', [
