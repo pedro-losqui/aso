@@ -1,7 +1,6 @@
 <div>
     <label for="">Colaborador</label>
     <input type="text" wire:model.debounce.500ms='busca' class="form-control" placeholder="Colaborador">
-    <button type="button" class="btn btn-success btn-sm mt-2"><i class="fas fa-user-tie mr-2"></i> Adicionar</button>
     @if($cpf)
         <span class="badge badge-success">CPF: {{ $cpf }}</span>
     @endif

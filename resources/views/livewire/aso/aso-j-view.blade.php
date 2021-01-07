@@ -66,18 +66,4 @@
         </div>
         @endforelse
     </div>
-
-    @push('scripts')
-        <script src="{{ asset('assets/plugins/select2/js/select2.full.min.js') }}"></script>
-
-        <script>
-            $(document).ready(function() {
-                $('.js-company').select2();
-                $('.js-company').on('change', function (e) {
-                    var data = $('.js-company').select2("val");
-                    @this.set('company_id', data);
-                });
-            });
-        </script>
-    @endpush
 </div>

@@ -38,7 +38,7 @@ class AsoJView extends Component
         ]);
     }
 
-    public function store()
+    public function storeAso()
     {
         dd($this->validate());
     }

@@ -1,11 +1,6 @@
 <div>
-    <livewire:aso.components.company-create />
     <label for="">Empresa</label>
     <input type="text" wire:model.debounce.500ms='busca' class="form-control" placeholder="Empresa">
-    @if(!$cnpj)
-    <button type="button" class="btn btn-info btn-sm mt-2" data-toggle="modal" data-target=".createCompanyAso"><i class="fas fa-building mr-2"></i>
-        Adicionar</button>
-    @endif
     @if($cnpj)
         <span class="badge badge-success">CNPJ: {{ $cnpj }}</span>
     @endif
