@@ -12,7 +12,7 @@
                 <form>
                     <div class="form-group">
                         <label for="">Razão social</label>
-                        <input type="text" wire:model='name' class="form-control" placeholder="Nome">
+                        <input type="text" wire:model='name' class="form-control" placeholder="Razão social">
                         @error('name')
                             <span class="badge badge-danger mt-2" style="font-size: 11px">{{ $message }}</span>
                         @enderror

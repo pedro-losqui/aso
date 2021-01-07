@@ -7,13 +7,17 @@ use App\Models\Company;
 
 class SelectCompany extends Component
 {
-    public $busca= '';
+    public $busca;
 
     public $companies, $cnpj;
 
     public function updated()
     {
-        $this->searchCompany();
+        if (strlen($this->busca) >  1) {
+            $this->searchCompany();
+        }else{
+            $this->selectClear();
+        }
     }
 
     public function render()
@@ -39,6 +43,7 @@ class SelectCompany extends Component
     public function selectClear()
     {
         $this->busca     = '';
+        $this->cnpj      = '';
         $this->companies = '';
     }
 }

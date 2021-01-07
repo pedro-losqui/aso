@@ -7,13 +7,17 @@ use App\Models\Employee;
 
 class SelectEmployee extends Component
 {
-    public $busca = '';
+    public $busca;
 
     public $employees, $cpf;
 
     public function updated()
     {
-        $this->searchEmployee();
+        if (strlen($this->busca) >  1) {
+            $this->searchEmployee();
+        }else{
+            $this->selectClear();
+        }
     }
 
     public function render()
@@ -39,6 +43,7 @@ class SelectEmployee extends Component
     public function selectClear()
     {
         $this->busca     = '';
+        $this->cpf       = '';
         $this->employees = '';
     }
 }

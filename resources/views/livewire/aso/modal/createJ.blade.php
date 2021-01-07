@@ -11,21 +11,8 @@
             <div class="modal-body">
                 <form>
 
-                    <div class="form-group">
-                        <label for="">Tipo de atendimento</label>
-                        <select wire:model='type' class="custom-select form-control">
-                            <option value=''>Selecione</option>
-                            <option value="Admissional">Admissional</option>
-                            <option value="Periódico">Periódico</option>
-                            <option value="Retorno ao Trabalho">Retorno ao Trabalho</option>
-                            <option value="Demissional">Demissional</option>
-                            <option value="Consulta">Consulta</option>
-                            <option value="Complementares">Complementares</option>
-                        </select>
-                        @error('type')
-                            <span class="badge badge-danger mt-2" style="font-size: 11px">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    @include('components.alert')
+                    <br />
 
                     <div class="form-group">
                         <livewire:aso.components.select-company />
@@ -43,9 +30,27 @@
                         @enderror
                     </div>
 
+                    <br />
+
+                    <div class="form-group">
+                        <label for="">Tipo de atendimento</label>
+                        <select wire:model='type' class="custom-select form-control">
+                            <option value=''>Selecione</option>
+                            <option value="Admissional">Admissional</option>
+                            <option value="Periódico">Periódico</option>
+                            <option value="Retorno ao Trabalho">Retorno ao Trabalho</option>
+                            <option value="Demissional">Demissional</option>
+                            <option value="Consulta">Consulta</option>
+                            <option value="Complementares">Complementares</option>
+                        </select>
+                        @error('type')
+                            <span class="badge badge-danger mt-2" style="font-size: 11px">{{ $message }}</span>
+                        @enderror
+                    </div>
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="">Ambiente de Trabalho</label>
+                            <label for="">Ambiente de trabalho</label>
                             <input type="text" wire:model='workplace' class="form-control"
                                 placeholder="Ambiente de Trabalho">
                             @error('workplace')
@@ -61,11 +66,12 @@
                         </div>
                     </div>
 
+                    <br />
+
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="">Risco físico</label>
-                            <input type="text" wire:model='physicist' class="form-control"
-                                placeholder="Risco físico">
+                            <input type="text" wire:model='physicist' class="form-control" placeholder="Risco físico">
                             @error('physicist')
                                 <span class="badge badge-danger mt-2" style="font-size: 11px">{{ $message }}</span>
                             @enderror
@@ -79,7 +85,8 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="">Risco biológico</label>
-                            <input type="text" wire:model='biological' class="form-control" placeholder="Risco biológico">
+                            <input type="text" wire:model='biological' class="form-control"
+                                placeholder="Risco biológico">
                             @error('biological')
                                 <span class="badge badge-danger mt-2" style="font-size: 11px">{{ $message }}</span>
                             @enderror
@@ -102,6 +109,12 @@
                                 <span class="badge badge-danger mt-2" style="font-size: 11px">{{ $message }}</span>
                             @enderror
                         </div>
+                    </div>
+
+                    <br />
+
+                    <div class="form-group">
+                        <livewire:aso.components.select-conclusion />
                     </div>
 
                 </form>

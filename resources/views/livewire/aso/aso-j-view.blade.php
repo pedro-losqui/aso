@@ -30,7 +30,7 @@
                     <div class="input-group">
                         <button type="button" wire:click='default' data-toggle="modal" data-target=".createAsoJ"
                             class="btn btn-success btn-lg btn-block"><i class="fas fa-file-alt mr-2"></i>
-                            ASO</button>
+                            aso</button>
                     </div>
                 </div>
             </div>

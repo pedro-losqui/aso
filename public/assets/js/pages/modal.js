@@ -51,6 +51,13 @@ window.livewire.on('userStore', () => {
     }, 2000);
 });
 
+window.livewire.on('companyStoreAso', () => {
+    $('.createCompanyAso').modal('hide');
+    setTimeout(function () {
+        $('.alert-success').fadeOut();
+    }, 2000);
+});
+
 /*
     Update
 */
