@@ -6,7 +6,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Registro empresa</h5>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Registro ASO</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        
                         <br />
 
                         <div class="form-group">
@@ -145,11 +145,14 @@
                             <livewire:aso.components.select-conclusion />
                         </div>
 
+                        <div class="form-group">
+                            <livewire:aso.components.select-doctor />
+                        </div>
+
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-info" wire:click='default'>Limpar</button>
                     <button type="button" class="btn btn-primary" wire:click='store'>Salvar</button>
                 </div>
             </div>

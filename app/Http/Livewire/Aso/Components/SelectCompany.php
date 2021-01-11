@@ -47,4 +47,5 @@ class SelectCompany extends Component
         $this->companies = '';
         $this->emit('selectCompanyClear', null);
     }
+
 }

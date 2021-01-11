@@ -9,7 +9,7 @@ class ExamCreate extends Component
 {
     public $busca = [];
 
-    public $inputs = [], $i;
+    public $inputs = [], $i, $aux;
 
     public $exam_id, $exams = [] , $date;
 
@@ -34,7 +34,7 @@ class ExamCreate extends Component
 
     public function searchExame()
     {
-        $this->exams = Exam::all();
+        $this->exams = Exam::orderBy('description', 'ASC')->get();
     }
     
     public function selectExams()
@@ -57,12 +57,12 @@ class ExamCreate extends Component
 
     public function remove($i, $key)
     {           
-        $aux = $key + 1;
+        $this->aux = $key + 1;
 
         $this->selectExamsClear();
         unset($this->inputs[$key]);
-        unset($this->exam_id[$aux]);
-        unset($this->date[$aux]);
+        unset($this->exam_id[$this->aux]);
+        unset($this->date[$this->aux]);
         $this->i = $i - 1;
         $this->selectExams();
     }

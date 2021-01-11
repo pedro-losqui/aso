@@ -19,7 +19,8 @@ class SelectConclusion extends Component
     public function render()
     {
         return view('livewire.aso.components.select-conclusion', [
-            'conclusions' => Conclusion::all()
+            'conclusions' => Conclusion::orderBy('description', 'ASC')
+            ->get()
         ]);
     }
 
@@ -27,6 +28,4 @@ class SelectConclusion extends Component
     {
         $this->emit('selectConclusion', $id);
     }
-
-
 }

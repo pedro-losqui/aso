@@ -12,9 +12,10 @@ class AsoJView extends Component
 
     public $type, $company_id, $employee_id, $doctor_id, $conclusion_id, $workplace, $post, $physicist, $chemical, $biological, $ergonomic, $accident, $exams, $exam_date;
 
-    protected $listeners = ['selectCompany', 'selectEmployee', 'selectConclusion', 'selectCompanyClear', 'selectEmployeeClear', 'selectExams', 'selectExamsClear'];
+    protected $listeners = ['selectCompany', 'selectEmployee', 'selectDoctor','selectConclusion', 'selectCompanyClear', 'selectEmployeeClear', 'selectExams', 'selectExamsClear'];
 
     protected $rules = [
+        'user_id'       => 'required',
         'type'          => 'required|string',
         'company_id'    => 'required|integer',
         'employee_id'   => 'required|integer',
@@ -42,7 +43,8 @@ class AsoJView extends Component
 
     public function store()
     {
-        dd($this->validate());
+        $aso = Aso::create($this->validate());
+        return redirect()->to('/asoj');
     }
 
     public function selectCompany($id)
@@ -77,6 +79,11 @@ class AsoJView extends Component
         $this->exam_date = '';
     }
 
+
+    public function selectDoctor($id)
+    {
+        $this->doctor_id = $id;
+    }
 
     public function selectConclusion($id)
     {
