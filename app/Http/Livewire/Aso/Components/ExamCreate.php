@@ -7,22 +7,24 @@ use App\Models\Exam;
 
 class ExamCreate extends Component
 {
-    public $busca, $date;
+    public $busca = [];
 
-    public $exams, $description;
+    public $inputs = [], $i;
+
+    public $exam_id, $exams = [] , $date;
 
     public function mount()
     {
-        $this->date = date('Y-m-d');
+        $this->aux      = 1;
+        $this->i        = 1;
+        array_push($this->inputs , $this->i);
+        $this->searchExame();
     }
 
     public function updated()
     {
-        if (strlen($this->busca) >  1) {
-            $this->searchExame();
-        }else{
-            $this->selectClear();
-        }
+        $this->selectExams();
+
     }
 
     public function render()
@@ -32,23 +34,36 @@ class ExamCreate extends Component
 
     public function searchExame()
     {
-        $this->exams = Exam::where('description', 'LIKE', "%{$this->busca}%")
-        ->get();
+        $this->exams = Exam::all();
     }
-
-    public function selectExam($id, $description)
-    {
-        $this->busca        = $description;
-        $this->exams        = '';
-        $this->emit('selectCompany', $id);
-    }
-
     
-    public function selectClear()
+    public function selectExams()
     {
-        $this->busca        = '';
-        $this->exams        = '';
-        $this->description  = '';
+        $this->emit('selectExams', $this->exam_id, $this->date);
     }
 
+    public function selectExamsClear()
+    {
+        $this->emit('selectExamsClear');
+    }
+
+
+    public function add($i)
+    {
+        $i = $i + 1;
+        $this->i = $i;
+        array_push($this->inputs ,$i);
+    }
+
+    public function remove($i, $key)
+    {           
+        $aux = $key + 1;
+
+        $this->selectExamsClear();
+        unset($this->inputs[$key]);
+        unset($this->exam_id[$aux]);
+        unset($this->date[$aux]);
+        $this->i = $i - 1;
+        $this->selectExams();
+    }
 }

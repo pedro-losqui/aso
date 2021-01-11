@@ -1,9 +1,4 @@
 <div>
-
-    @push('css')
-        <link href="{{ asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">   
-    @endpush
-
     @include('livewire.aso.modal.createJ')
     @include('livewire.aso.modal.editJ')
 

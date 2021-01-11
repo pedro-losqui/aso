@@ -10,9 +10,9 @@ class AsoJView extends Component
 {
     public $busca = '',  $user_id = 1;
 
-    public $type, $company_id, $employee_id, $doctor_id, $conclusion_id, $workplace, $post, $physicist, $chemical, $biological, $ergonomic, $accident;
+    public $type, $company_id, $employee_id, $doctor_id, $conclusion_id, $workplace, $post, $physicist, $chemical, $biological, $ergonomic, $accident, $exams, $exam_date;
 
-    protected $listeners = ['selectCompany', 'selectEmployee', 'selectConclusion', 'selectCompanyClear', 'selectEmployeeClear'];
+    protected $listeners = ['selectCompany', 'selectEmployee', 'selectConclusion', 'selectCompanyClear', 'selectEmployeeClear', 'selectExams', 'selectExamsClear'];
 
     protected $rules = [
         'type'          => 'required|string',
@@ -27,6 +27,8 @@ class AsoJView extends Component
         'biological'    => '',
         'ergonomic'     => '',
         'accident'      => '',
+        'exams'         => '',
+        'exam_date'     => '',
     ];
 
     public function render()
@@ -61,6 +63,18 @@ class AsoJView extends Component
     public function selectEmployeeClear($id)
     {
         $this->employee_id = $id;
+    }
+
+    public function selectExams($id, $date)
+    {
+        $this->exams     = $id;
+        $this->exam_date = $date;
+    }
+
+    public function selectExamsClear()
+    {
+        $this->exams     = '';
+        $this->exam_date = '';
     }
 
 
