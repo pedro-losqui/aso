@@ -1,13 +1,3 @@
-@if(session()->has('modal'))
-    <div class="row">
-        <div class="col-12">
-            <div class="alert alert-success" role="alert">
-                {{ session('success') }}
-            </div>
-        </div>
-    </div>
-@endif
-
 @if(session()->has('success'))
     <div class="row">
         <div class="col-12">

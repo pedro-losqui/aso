@@ -23,7 +23,7 @@
             <i class="menu-icon icon-clipboard"></i><span>Atendimento</span><i class="accordion-icon fas fa-angle-left"></i>
         </a>
         <ul class="sub-menu">
-            <li><a href="{{ route('asoj') }}">Pessoa jurídica</a></li>
+            <li><a href="{{ route('asoj') }}">Pessoa Jurídica</a></li>
             <li><a href="#">Pessoa Física</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Histórico PJ</a></li>

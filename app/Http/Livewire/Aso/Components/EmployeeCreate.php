@@ -28,7 +28,6 @@ class EmployeeCreate extends Component
     public function store()
     {
         $employee = Employee::create($this->validate());
-        session()->flash('success', 'Colaborador(a) '. $employee->name . ' registrado com sucesso ;)');
         $this->emit('employeeStoreAso');
         $this->default();
     }

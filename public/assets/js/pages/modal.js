@@ -1,7 +1,8 @@
 /*
-    Store
+------------------------------------
+Store
+------------------------------------
 */
-
 window.livewire.on('employeeStore', () => {
     $('.createEmployee').modal('hide');
     setTimeout(function () {
@@ -53,22 +54,24 @@ window.livewire.on('userStore', () => {
 
 window.livewire.on('companyStoreAso', () => {
     $('.createCompanyAso').modal('hide');
-    setTimeout(function () {
-        $('.alert-success').fadeOut();
-    }, 2000);
 });
 
 window.livewire.on('employeeStoreAso', () => {
     $('.createEmployeeAso').modal('hide');
+});
+
+window.livewire.on('asoStore', () => {
     setTimeout(function () {
         $('.alert-success').fadeOut();
     }, 2000);
 });
 
-/*
-    Update
-*/
 
+/*
+------------------------------------
+Update
+------------------------------------
+*/
 window.livewire.on('employeeUpdate', () => {
     $('.editEmployee').modal('hide');
     setTimeout(function () {
@@ -125,10 +128,12 @@ window.livewire.on('userUpdate', () => {
     }, 2000);
 });
 
-/*
-    Delete
-*/
 
+/*
+------------------------------------
+Delete
+------------------------------------
+*/
 window.livewire.on('employeeDelete', () => {
     setTimeout(function () {
         $('.alert-danger').fadeOut();
@@ -170,4 +175,3 @@ window.livewire.on('userDelete', () => {
         $('.alert-danger').fadeOut();
     }, 2000);
 });
-

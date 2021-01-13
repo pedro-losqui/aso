@@ -2,112 +2,33 @@
 
 namespace App\Http\Livewire\Aso;
 
-use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Aso;
 
-class AsoJView extends Component
+class AsojView extends Component
 {
-    public $busca = '',  $user_id = 1;
+    public $busca, $results, $employees;
 
-    public $type, $company_id, $employee_id, $doctor_id, $conclusion_id, $workplace, $post, $physicist, $chemical, $biological, $ergonomic, $accident, $exams, $exam_date;
-
-    protected $listeners = ['selectCompany', 'selectEmployee', 'selectDoctor','selectConclusion', 'selectCompanyClear', 'selectEmployeeClear', 'selectExams', 'selectExamsClear'];
-
-    protected $rules = [
-        'user_id'       => 'required',
-        'type'          => 'required|string',
-        'company_id'    => 'required|integer',
-        'employee_id'   => 'required|integer',
-        'doctor_id'     => '',
-        'conclusion_id' => '',
-        'workplace'     => 'required|string',
-        'post'          => 'required|string',
-        'physicist'     => '',
-        'chemical'      => '',
-        'biological'    => '',
-        'ergonomic'     => '',
-        'accident'      => '',
-        'exams'         => '',
-        'exam_date'     => '',
-    ];
+    public function updated()
+    {
+        //dd($this->render());
+    }
 
     public function render()
     {
-        return view('livewire.aso.aso-j-view', [
-            'aso' => Aso::whereNotNull('company_id') 
+        return view('livewire.aso.asoj-view', [
+            'aso' => Aso::whereNotNull('company_id')
+            ->whereHas('employee', function($query) {
+                $query->where('name', 'LIKE', "%{$this->busca}%");
+            })
             ->orderBy('id', 'DESC')
-            ->paginate(10)
+            ->get()
         ]);
-    }
-
-    public function store()
-    {
-        $aso = Aso::create($this->validate());
-        return redirect()->to('/asoj');
-    }
-
-    public function selectCompany($id)
-    {
-        $this->company_id = $id;
-    }
-    
-    public function selectCompanyClear($id)
-    {
-        $this->company_id = $id;
-    }
-
-    public function selectEmployee($id)
-    {
-        $this->employee_id = $id;
-    }
-
-    public function selectEmployeeClear($id)
-    {
-        $this->employee_id = $id;
-    }
-
-    public function selectExams($id, $date)
-    {
-        $this->exams     = $id;
-        $this->exam_date = $date;
-    }
-
-    public function selectExamsClear()
-    {
-        $this->exams     = '';
-        $this->exam_date = '';
-    }
-
-
-    public function selectDoctor($id)
-    {
-        $this->doctor_id = $id;
-    }
-
-    public function selectConclusion($id)
-    {
-        $this->conclusion_id = $id;
-    }
-
-    public function default()
-    {
-        $this->type             = '';
-        $this->company_id       = '';
-        $this->employee_id      = '';
-        $this->doctor_id        = '';
-        $this->conclusion_id    = '';
-        $this->workplace        = '';
-        $this->post             = ''; 
-        $this->physicist        = '';
-        $this->chemical         = ''; 
-        $this->biological       = '';
-        $this->ergonomic        = '';
-        $this->accident         = '';
     }
 
     public function clear()
     {
         $this->busca = '';
     }
+
 }

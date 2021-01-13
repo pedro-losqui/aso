@@ -6,7 +6,7 @@
     </div>
     @foreach($inputs as $key => $value)
         <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-9">
                 <label for="">Exames</label>
                 <select class="form-control" wire:model='exam_id.{{ $value }}'>
                     <option value="">Selecione</option>
@@ -15,7 +15,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-3">
                 <label for="">Data</label>
                 <div class="input-group">
                     <input type="date" wire:model='date.{{ $value }}' class="form-control">

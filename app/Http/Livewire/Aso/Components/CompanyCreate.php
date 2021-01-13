@@ -25,7 +25,7 @@ class CompanyCreate extends Component
     public function store()
     {
         $comapany = Company::create($this->validate());
-        session()->flash('modal', 'Empresa '. $comapany->name . ' registrada com sucesso ;)');
+        session()->flash('success', 'Empresa '. $comapany->name . ' registrada com sucesso ;)');
         $this->emit('companyStoreAso');
         $this->default();
     }

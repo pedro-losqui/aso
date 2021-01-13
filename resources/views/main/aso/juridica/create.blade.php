@@ -11,6 +11,6 @@
     <h1 class="page-title">ASO</h1>
 </div>
 
-<livewire:aso.asoj-view/>
+<livewire:aso.actions.asoj-create/>
 
 @endsection
