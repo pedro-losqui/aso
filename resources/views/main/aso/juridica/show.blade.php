@@ -79,7 +79,7 @@
                                             <address class="font-13">
                                                 <strong class="font-15">CNPJ:</strong><br>
                                                 {{ $aso->company->cnpj }}
-                                                .............................................................................................................................................................................................................................................................................................................................................................
+                                                <hr style="border-top: dotted 1px; width: 1162px;">
                                             </address>
                                         </div>
                                     </div>
@@ -100,17 +100,15 @@
                                             <address class="font-13">
                                                 <strong class="font-15">CPF:</strong><br>
                                                 {{ $aso->employee->cpf }}
-                                                .............................................................................................................................................................................................................................................................................................................................................................
-                                                <br>
-                                                <br>
+                                                <hr style="border-top: dotted 1px; width: 1162px;">
                                                 <strong class="font-15">Ambiente de Trabalho:</strong><br>
                                                 {{ $aso->workplace }}
-                                                .............................................................................................................................................................................................................................................................................................................................................................
+                                                <hr style="border-top: dotted 1px; width: 1162px;">
                                             </address>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="">
+                                        <div class="float-left">
                                             <address class="font-13">
                                                 <strong class="font-15">Funcionário:</strong><br>
                                                 {{ $aso->employee->name }}
@@ -119,10 +117,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="">
+                                        <div class="float-left">
                                             <address class="font-13">
                                                 <strong class="font-15">Data de Nascimento:</strong><br>
-                                                {{ $aso->employee->born_date }}
+                                                {{ date("d/m/Y", strtotime($aso->employee->born_date)) }}
                                                 <br>
                                                 <br>
                                                 <br>
@@ -132,7 +130,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="">
+                                        <div class="float-left">
                                             <address class="font-13">
                                                 <strong class="font-15">Sexo:</strong><br>
                                                 {{ $aso->employee->gender }}
@@ -187,19 +185,23 @@
                                                     @foreach($aso->exams as $item)
                                                         <tr>
                                                             <td>{{ $item->description }}</td>
-                                                            <td>{{ $item->pivot->execution_date }}</td>
+                                                            <td>{{ date("d/m/Y", strtotime($item->pivot->execution_date)) }}
+                                                            </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            <hr style="width: 100%; margin-top: 0;">
                                         </div>
                                     </div>
                                 </div>
 
-                                <hr>
-
-                                <h6 class="mt-1">Conclusão:</h6>
                                 <br>
+
+                                <h6 class="mt-2">Conclusão
+                                    <hr style="width: 100%; margin-top: 0.3cm;">
+                                </h6>
+
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -208,20 +210,20 @@
                                                 <strong class="font-14">Apto
                                                     (&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;&nbsp;</strong>
                                                 @if($aso->conclusion)
-                                                    {{ $aso->conclusion->description }}<br>
+                                                    {{ $aso->type }}<br>
                                                 @endif
-                                                ____________________________________________________________________________________________
                                             </address>
                                         </div>
+                                        <hr style="border-top: dotted 1px; width: 100%; margin-top: 1cm;">
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="">
+                                        <div class="float-left">
                                             <address class="font-13">
                                                 <strong class="font-14">Inapto
                                                     (&nbsp;&nbsp;&nbsp;&nbsp;)</strong><br>
-                                                ____________________________________________________________________________________________
                                             </address>
                                         </div>
+                                        <hr style="border-top: dotted 1px; width: 100%; margin-top: 1cm;">
                                     </div>
                                 </div>
 
@@ -233,9 +235,9 @@
                                         <div class="float-left">
                                             <address class="font-13">
                                                 <strong class="font-14">Parecer Médico:</strong><br>
-                                                _________________________________________________________________________________________________________________________________________________________________________________
                                             </address>
                                         </div>
+                                        <hr style="border-top: dotted 1px; width: 100%; margin-top: 1cm;">
                                     </div>
                                 </div>
 
@@ -246,17 +248,17 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
+                                        <hr style="border-top: dotted 1px; width: 100%;">
                                         <div class="float-left">
                                             <address class="font-13">
-                                                _______________________________________________________________________________________
                                                 <strong class="font-14">Médico(a) Examinador(a)</strong><br>
                                             </address>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="">
+                                        <hr style="border-top: dotted 1px; width: 100%;">
+                                        <div class="float-left">
                                             <address class="font-13">
-                                                _______________________________________________________________________________________
                                                 <strong class="font-14">Recebi a 2ª Via -
                                                     Funcionário(a)</strong><br>
                                             </address>
@@ -274,7 +276,7 @@
                                                 <address class="font-13">
                                                     <strong class="font-14">Médico(a) do Trabalho -Coord. do
                                                         PCMSO</strong><br>
-                                                    Dr(a). {{ $aso->doctor->doctor_name }} <br>
+                                                    Dr(a). {{ $aso->doctor->name }} <br>
                                                     CRM: {{ $aso->doctor->crm }}/{{ $aso->doctor->uf }} <br>
                                                 </address>
                                             @endif
@@ -287,7 +289,6 @@
                 </div>
             </div>
         </div>
-
         <div style="page-break-before: always;"></div>
     @endfor
 
@@ -351,7 +352,7 @@
                                         <address class="font-13">
                                             <strong class="font-15">CNPJ:</strong><br>
                                             {{ $aso->company->cnpj }}
-                                            .............................................................................................................................................................................................................................................................................................................................................................
+                                            <hr style="border-top: dotted 1px; width: 1162px;">
                                         </address>
                                     </div>
                                 </div>
@@ -359,7 +360,7 @@
                                     <div class="">
                                         <address class="font-13">
                                             <strong class="font-15">Empresa:</strong><br>
-                                            {{ $aso->company->company_name }}
+                                            {{ $aso->company->name }}
                                             <br>
                                             <br>
                                         </address>
@@ -372,7 +373,9 @@
                                         <address class="font-13">
                                             <strong class="font-15">CPF:</strong><br>
                                             {{ $aso->employee->cpf }}
-                                            .............................................................................................................................................................................................................................................................................................................................................................
+
+                                            <hr style="border-top: dotted 1px; width: 1162px;">
+
                                             <br>
                                             <br>
                                         </address>
@@ -382,7 +385,7 @@
                                     <div class="">
                                         <address class="font-13">
                                             <strong class="font-15">Funcionário:</strong><br>
-                                            {{ $aso->employee->employee_name }}
+                                            {{ $aso->employee->name }}
                                             <br>
                                         </address>
                                     </div>
@@ -391,7 +394,7 @@
                                     <div class="">
                                         <address class="font-13">
                                             <strong class="font-15">Data de Nascimento:</strong><br>
-                                            {{ $aso->employee->born_date }}
+                                            {{ date("d/m/Y", strtotime($aso->employee->born_date)) }}
                                             <br>
                                             <br>
                                             <br>
@@ -411,17 +414,19 @@
                                 </div>
                             </div>
 
-                            <h6 class="mt-0">Sinais vitais:</h6>
+                            <h6 style="margin-top: -0.5cm">Sinais vitais:</h6>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="float-left">
                                         <ul class="pl-3">
                                             <li><strong>Peso:
-                                                </strong>_______________________________________________________________________________(Kg)
+                                                    <hr style="border-top: dotted 1px; width: 450px; margin: 0">
+                                                    </strong>(Kg)
                                             </li>
                                             <br>
                                             <li><strong>Altura:
-                                                </strong>______________________________________________________________________________(Mt)
+                                                    <hr style="border-top: dotted 1px; width: 450px; margin: 0">
+                                                    </strong>(Mt)
                                             </li>
                                         </ul>
                                     </div>
@@ -430,12 +435,13 @@
                                     <div class="float-left">
                                         <ul class="pl-3">
                                             <li><strong>Pressão:
-                                                    <br>
-                                                </strong>________________________________________________________________X____________(mmHg)
+                                                    <hr style="border-top: dotted 1px; width: 450px; margin: 0">
+                                                    </strong>(mmHg)
                                             </li>
                                             <br>
                                             <li><strong>Freq. Cardíaca:
-                                                </strong>________________________________________________________________________________(bpm)
+                                                    <hr style="border-top: dotted 1px; width: 450px; margin: 0">
+                                                    </strong>(bpm)
                                             </li>
                                         </ul>
                                     </div>
@@ -483,7 +489,8 @@
                                                 <br>&nbsp; Sim (&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;&nbsp;&nbsp;&nbsp; Não
                                                 (&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;
                                                 <strong>Quais?
-                                                </strong>__________________________________________________________
+                                                    <hr style="border-top: dotted 1px; width: 450px; margin: 0">
+                                                    </strong>
                                             </li>
                                         </ul>
                                     </div>
@@ -524,15 +531,18 @@
                                     <div class="float-left">
                                         <ul class="pl-3">
                                             <li><strong>Tempo de trabalho:
-                                                </strong>_______________________________________________________________________
+                                                    <hr style="border-top: dotted 1px; width: 450px; margin: 0">
+                                                    </strong>
                                             </li>
                                             <br>
-                                            <li><strong>Última empresa.....:
-                                                </strong>_______________________________________________________________________
+                                            <li><strong>Última empresa:
+                                                    <hr style="border-top: dotted 1px; width: 450px; margin: 0">
+                                                    </strong>
                                             </li>
                                             <br>
-                                            <li><strong>Função..................:
-                                                </strong>_______________________________________________________________________
+                                            <li><strong>Função:
+                                                    <hr style="border-top: dotted 1px; width: 450px; margin: 0">
+                                                    </strong>
                                             </li>
                                         </ul>
                                     </div>
@@ -639,11 +649,13 @@
                                     <div class="float-left">
                                         <ul class="pl-3">
                                             <li><strong>OD:
-                                                </strong>_____________________________________________
+                                                    <hr style="border-top: dotted 1px; width: 450px; margin: 0">
+                                                    </strong>
                                             </li>
                                             <br>
                                             <li><strong>OE:
-                                                </strong>_____________________________________________
+                                                    <hr style="border-top: dotted 1px; width: 450px; margin: 0">
+                                                    </strong>
                                             </li>
                                         </ul>
                                     </div>
@@ -664,15 +676,12 @@
                             </div>
 
                             <hr>
-                            <br>
-                            <br>
 
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="float-left">
                                         <address class="font-13">
                                             <strong class="font-14">Conclusão:</strong><br>
-                                            ______________________________________________________________________________________________________________________________________________________________
                                             Apto (&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp; Inapto (&nbsp;&nbsp;&nbsp;&nbsp;)
                                         </address>
                                     </div>
@@ -685,17 +694,17 @@
 
                             <div class="row">
                                 <div class="col-md-6">
+                                    <hr style="border-top: dotted 1px; width: 100%; margin: 0">
                                     <div class="float-left">
                                         <address class="font-13">
-                                            _______________________________________________________________________________________
                                             <strong class="font-14">Médico(a) Examinador(a)</strong><br>
                                         </address>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="">
+                                    <hr style="border-top: dotted 1px; width: 100%; margin: 0">
+                                    <div class="float-left">
                                         <address class="font-13">
-                                            _______________________________________________________________________________________
                                             <strong class="font-14">Funcionário(a)</strong><br>
                                         </address>
                                     </div>
@@ -709,7 +718,7 @@
     </div>
 
     <script>
-        //javascript: window.print();
+        javascript: window.print();
 
     </script>
 </body>
