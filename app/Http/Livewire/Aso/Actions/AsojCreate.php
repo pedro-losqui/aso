@@ -38,13 +38,15 @@ class AsojCreate extends Component
 
     public function store()
     {   
+        $this->uppercase();
+
         $aso = Aso::create($this->validate());
 
         foreach ($this->exam_id as $key => $value) {
             $aso->exams()->attach($this->exam_id[$key], ['execution_date' => $this->execution_date[$key] ]);
         }
 
-        session()->flash('success', 'Aso do colaborador: '. $aso->employee->name .' foi gerado com sucesso :)');
+        session()->flash('success', 'Aso do colaborador(a): '. $aso->employee->name .' foi gerado com sucesso :)');
         $this->emit('asoStore');
         return redirect()->to('/asoj');
     }
@@ -90,6 +92,17 @@ class AsojCreate extends Component
     public function selectConclusion($id)
     {
         $this->conclusion_id = $id;
+    }
+
+    public function uppercase()
+    {
+        $this->workplace = strtoupper($this->workplace);
+        $this->post = strtoupper($this->post);
+        $this->physicist = strtoupper($this->physicist);
+        $this->chemical = strtoupper($this->chemical);
+        $this->biological = strtoupper($this->biological);
+        $this->ergonomic = strtoupper($this->ergonomic);
+        $this->accident = strtoupper($this->accident);
     }
 
     public function clear()

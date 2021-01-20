@@ -11,6 +11,8 @@ class SelectConclusion extends Component
 
     public $conclusion_id;
 
+    protected $listeners = ['editConclusion'];
+
     public function updated()
     {
         $this->selectConclusion($this->conclusion_id);
@@ -22,6 +24,12 @@ class SelectConclusion extends Component
             'conclusions' => Conclusion::orderBy('description', 'ASC')
             ->get()
         ]);
+    }
+
+    public function editConclusion($id)
+    {
+        $conclusion = Conclusion::find($id);
+        $this->conclusion_id = $conclusion->id;
     }
 
     public function selectConclusion($id)

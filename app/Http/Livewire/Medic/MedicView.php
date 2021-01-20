@@ -30,6 +30,7 @@ class MedicView extends Component
 
     public function store()
     {
+        $this->firstUppercase();
         $doctor = Doctor::create($this->validate());
         session()->flash('success', 'Médico(a) '. $doctor->name . ' registrado com sucesso ;)');
         $this->emit('medicStore');
@@ -47,6 +48,8 @@ class MedicView extends Component
 
     public function update()
     {
+        $this->uppercase();
+
         $data = $this->validate([
             'user_id'      => 'required',
             'name'         => 'required|string',
@@ -67,6 +70,12 @@ class MedicView extends Component
         $medic->delete();
         session()->flash('delete', 'Médico(a) '. $medic->name . ' foi exluido com sucesso ;)');
         $this->emit('medicDelete');
+    }
+
+    public function firstUppercase()
+    {
+        $words = strtolower($this->name);
+        $this->name = ucwords($words);
     }
 
     public function default()

@@ -28,6 +28,7 @@ class ExamView extends Component
 
     public function store()
     {
+        $this->firstUppercase();
         $exam = Exam::create($this->validate());
         session()->flash('success', 'Exame '. $exam->description . ' registrado com sucesso ;)');
         $this->emit('examStore');
@@ -61,6 +62,12 @@ class ExamView extends Component
         $exam->delete();
         session()->flash('delete', 'Exame '. $exam->description . ' foi exluido com sucesso ;)');
         $this->emit('examDelete');
+    }
+
+    public function firstUppercase()
+    {
+        $words = strtolower($this->description);
+        $this->description = ucwords($words);
     }
 
     public function default()

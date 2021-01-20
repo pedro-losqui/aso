@@ -33,6 +33,7 @@ class CompanyView extends Component
 
     public function store()
     {
+        $this->uppercase();
         $comapany = Company::create($this->validate());
         session()->flash('success', 'Empresa '. $comapany->name . ' registrada com sucesso ;)');
         $this->emit('companyStore');
@@ -49,6 +50,8 @@ class CompanyView extends Component
 
     public function update()
     {
+        $this->uppercase();
+        
         $data = $this->validate([
             'user_id'      => 'required',
             'cnpj'         => 'required|string|unique:companies,cnpj, '. $this->company_id,
@@ -68,6 +71,11 @@ class CompanyView extends Component
         $company->delete();
         session()->flash('delete', 'Empresa '. $company->name . ' foi exluida com sucesso ;)');
         $this->emit('companyDelete');
+    }
+
+    public function uppercase()
+    {
+        $this->name = strtoupper($this->name);
     }
 
     public function default()

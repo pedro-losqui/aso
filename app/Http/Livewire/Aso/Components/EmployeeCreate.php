@@ -27,9 +27,16 @@ class EmployeeCreate extends Component
 
     public function store()
     {
+        $this->firstUppercase();
         $employee = Employee::create($this->validate());
         $this->emit('employeeStoreAso');
         $this->default();
+    }
+
+    public function firstUppercase()
+    {
+        $words = strtolower($this->name);
+        $this->name = ucwords($words);
     }
 
     public function default()

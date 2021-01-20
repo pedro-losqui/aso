@@ -9,6 +9,8 @@ class SelectDoctor extends Component
 {
     public $doctor_id;
 
+    protected $listeners = ['editDoctor'];
+
     public function updated()
     {
         $this->selectDoctor($this->doctor_id);
@@ -20,6 +22,12 @@ class SelectDoctor extends Component
             'doctors' => Doctor::orderBy('name', 'ASC')
             ->get()
         ]);
+    }
+
+    public function editDoctor($id)
+    {
+        $doctor = Doctor::find($id);
+        $this->doctor_id = $doctor->id;
     }
 
     public function selectDoctor($id)

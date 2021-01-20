@@ -28,6 +28,7 @@ class ConclusionView extends Component
 
     public function store()
     {
+        $this->firstUppercase();
         $conclusion = Conclusion::create($this->validate());
         session()->flash('success', 'Parecer '. $conclusion->description . ' registrado com sucesso ;)');
         $this->emit('conclusionStore');
@@ -61,6 +62,12 @@ class ConclusionView extends Component
         $conclusion->delete();
         session()->flash('delete', 'Parecer '. $conclusion->description . ' foi exluido com sucesso ;)');
         $this->emit('conclusionDelete');
+    }
+
+    public function firstUppercase()
+    {
+        $words = strtolower($this->description);
+        $this->description = ucwords($words);
     }
 
     public function default()

@@ -29,7 +29,7 @@
                                             <li class="list-inline-item">
                                                 <div class="pl-3">
                                                     <p class="text-muted mb-0 font-13"><strong>CMA - Saúde Ocupacional e
-                                                            Segurança do Trabalho ltda EPP.</strong></p>
+                                                            Segurança do Trabalho Ltda EPP.</strong></p>
                                                     <p class="text-muted mb-0 font-13">Av. Francisco Pereira de Castro,
                                                         358
                                                         - Anhangabaú, Jundiaí - <br> SP, 13208-110</p>
@@ -210,7 +210,7 @@
                                                 <strong class="font-14">Apto
                                                     (&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;&nbsp;</strong>
                                                 @if($aso->conclusion)
-                                                    {{ $aso->type }}<br>
+                                                    {{ $aso->conclusion->description }}<br>
                                                 @endif
                                             </address>
                                         </div>

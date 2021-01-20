@@ -4,27 +4,29 @@ namespace App\Http\Livewire\Aso\Components;
 
 use Livewire\Component;
 use App\Models\Exam;
+use App\Models\ASo;
 
 class ExamCreate extends Component
 {
     public $busca = [];
 
-    public $inputs = [], $i, $aux;
+    public $inputs = [], $i;
 
-    public $exam_id, $exams = [] , $date;
+    public $aso_id, $exam_id, $exams = [] , $date = [];
+
+    protected $listeners = ['editExams'];
 
     public function mount()
     {
         $this->aux      = 1;
         $this->i        = 1;
         array_push($this->inputs , $this->i);
-        $this->searchExame();
+        $this->searchExams();
     }
 
     public function updated()
     {
         $this->selectExams();
-
     }
 
     public function render()
@@ -32,7 +34,23 @@ class ExamCreate extends Component
         return view('livewire.aso.components.exam-create');
     }
 
-    public function searchExame()
+    public function editExams($id)
+    {
+        $aso = Aso::find($id);
+     
+        $this->selectExamsClear();
+        $this->inputs = [];
+
+        foreach ($aso->exams as $key => $item) {
+            array_push($this->inputs, $key);
+            $this->i                = count($aso->exams);
+            $this->exam_id[$key]    = $item->pivot->exam_id;
+            $this->date[$key]       = $item->pivot->execution_date;
+        }
+        $this->selectExams();
+    }
+
+    public function searchExams()
     {
         $this->exams = Exam::orderBy('description', 'ASC')->get();
     }
@@ -47,23 +65,19 @@ class ExamCreate extends Component
         $this->emit('selectExamsClear');
     }
 
-
-    public function add($i)
+    public function add()
     {
-        $i = $i + 1;
-        $this->i = $i;
-        array_push($this->inputs ,$i);
+        $this->i = $this->i + 1;
+        array_push($this->inputs , $this->i);
     }
 
-    public function remove($i, $key)
-    {           
-        $this->aux = $key + 1;
-
+    public function remove($key)
+    {
         $this->selectExamsClear();
         unset($this->inputs[$key]);
-        unset($this->exam_id[$this->aux]);
-        unset($this->date[$this->aux]);
-        $this->i = $i - 1;
+        unset($this->exam_id[$key]);
+        unset($this->date[$key]);
+        $this->i = $this->i - 1;
         $this->selectExams();
     }
 }

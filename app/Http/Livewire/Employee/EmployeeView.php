@@ -34,6 +34,7 @@ class EmployeeView extends Component
 
     public function store()
     {
+        $this->firstUppercase();
         $employee = Employee::create($this->validate());
         session()->flash('success', 'Colaborador(a) '. $employee->name . ' registrado com sucesso ;)');
         $this->emit('employeeStore');
@@ -52,6 +53,8 @@ class EmployeeView extends Component
 
     public function update()
     {
+        $this->uppercase();
+
         $data = $this->validate([
             'user_id'      => 'required',
             'cpf'          => 'required|string|unique:employees,cpf, '. $this->employee_id,
@@ -59,7 +62,7 @@ class EmployeeView extends Component
             'born_date'    => 'required|date',
             'gender'       => 'required',
         ]);
-
+        
         $employee = Employee::find($this->employee_id);
         $employee->update($data);
         session()->flash('update', 'Colaborador(a) '. $employee->name . ' foi atualizado com sucesso ;)');
@@ -73,6 +76,12 @@ class EmployeeView extends Component
         $employee->delete();
         session()->flash('delete', 'Colaborador(a) '. $employee->name . ' foi exluido com sucesso ;)');
         $this->emit('employeeDelete');
+    }
+
+    public function firstUppercase()
+    {
+        $words = strtolower($this->name);
+        $this->name = ucwords($words);
     }
 
     public function default()

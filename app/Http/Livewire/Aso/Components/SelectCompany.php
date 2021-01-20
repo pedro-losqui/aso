@@ -9,7 +9,9 @@ class SelectCompany extends Component
 {
     public $busca;
 
-    public $companies, $cnpj;
+    public $company, $companies, $cnpj;
+
+    protected $listeners = ['editCompany'];
 
     public function updated()
     {
@@ -23,6 +25,13 @@ class SelectCompany extends Component
     public function render()
     {
         return view('livewire.aso.components.select-company');
+    }
+
+    public function editCompany($id)
+    {
+        $company = Company::find($id);
+        $this->busca        = $company->name;
+        $this->cnpj         = $company->cnpj;
     }
 
     public function searchCompany()

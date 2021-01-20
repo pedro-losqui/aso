@@ -24,10 +24,16 @@ class CompanyCreate extends Component
 
     public function store()
     {
+        $this->uppercase();
         $comapany = Company::create($this->validate());
         session()->flash('success', 'Empresa '. $comapany->name . ' registrada com sucesso ;)');
         $this->emit('companyStoreAso');
         $this->default();
+    }
+
+    public function uppercase()
+    {
+        $this->name = strtoupper($this->name);
     }
 
     public function default()

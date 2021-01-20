@@ -9,11 +9,6 @@ class AsojView extends Component
 {
     public $busca, $results, $employees;
 
-    public function updated()
-    {
-        //dd($this->render());
-    }
-
     public function render()
     {
         return view('livewire.aso.asoj-view', [
@@ -24,6 +19,11 @@ class AsojView extends Component
             ->orderBy('id', 'DESC')
             ->get()
         ]);
+    }
+
+    public function edit($id)
+    {
+        $this->emit('edit', $id);
     }
 
     public function clear()

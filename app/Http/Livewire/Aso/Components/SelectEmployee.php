@@ -11,6 +11,8 @@ class SelectEmployee extends Component
 
     public $employees, $cpf;
 
+    protected $listeners = ['editEmployee'];
+
     public function updated()
     {
         if (strlen($this->busca) >  1) {
@@ -24,6 +26,14 @@ class SelectEmployee extends Component
     {
         return view('livewire.aso.components.select-employee');
     }
+
+    public function editEmployee($id)
+    {
+        $employee = Employee::find($id);
+        $this->busca        = $employee->name;
+        $this->cpf          = $employee->cpf;
+    }
+
 
     public function searchEmployee()
     {

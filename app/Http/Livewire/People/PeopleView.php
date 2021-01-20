@@ -30,6 +30,7 @@ class PeopleView extends Component
 
     public function store()
     {
+        $this->uppercase();
         $people = People::create($this->validate());
         session()->flash('success', 'Pessoa física '. $people->name . ' registrada com sucesso ;)');
         $this->emit('peopleStore');
@@ -46,6 +47,8 @@ class PeopleView extends Component
 
     public function update()
     {
+        $this->uppercase();
+
         $data = $this->validate([
             'user_id'      => 'required',
             'cpf'          => 'required|string|unique:people,cpf, '. $this->people_id,
@@ -65,6 +68,11 @@ class PeopleView extends Component
         $people->delete();
         session()->flash('delete', 'Pessoa física '. $people->name . ' foi exluida com sucesso ;)');
         $this->emit('peopleDelete');
+    }
+
+    public function uppercase()
+    {
+        $this->name = strtoupper($this->name);
     }
 
     public function default()

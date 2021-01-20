@@ -1,15 +1,10 @@
 <div>
-    
-    @include('components.alert')
-    
     <div class="row">
         <div class="col-xl-8">
             <div class="card">
                 <div class="card-body">
-
                     <livewire:aso.components.company-create />
                     <livewire:aso.components.employee-create />
-
                     <h5 class="card-title">Dados inicias</h5>
                     <form>
                         <div class="form-row">
@@ -48,6 +43,7 @@
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Tipo de atendimento</label>
                             <select wire:model='type' class="form-control custom-select">
+                                <option value="">Selecione</option>
                                 <option value="Admissional">Admissional</option>
                                 <option value="Periódico">Periódico</option>
                                 <option value="Retorno ao Trabalho">Retorno ao Trabalho</option>
@@ -79,7 +75,7 @@
                         </div>
 
                         <br>
-                        <h5 class="card-title">Exames</h5>
+                        <h5 class="card-title">Riscos</h5>
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
