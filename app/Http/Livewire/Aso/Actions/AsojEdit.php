@@ -135,12 +135,13 @@ class AsojEdit extends Component
 
     public function uppercase()
     {
-        $this->workplace = strtoupper($this->workplace);
-        $this->post = strtoupper($this->post);
-        $this->physicist = strtoupper($this->physicist);
-        $this->chemical = strtoupper($this->chemical);
-        $this->biological = strtoupper($this->biological);
-        $this->ergonomic = strtoupper($this->ergonomic);
-        $this->accident = strtoupper($this->accident);
+        $this->workplace    = ucwords(strtolower($this->workplace));
+        $this->post         = ucwords(strtolower($this->post));
+
+        $this->physicist    = ucwords(strtolower($this->physicist));
+        $this->chemical     = ucwords(strtolower($this->chemical));
+        $this->biological   = ucwords(strtolower($this->biological));
+        $this->ergonomic    = ucwords(strtolower($this->ergonomic));
+        $this->accident     = ucwords(strtolower($this->accident));
     }
 }

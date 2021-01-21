@@ -33,6 +33,8 @@ class UserView extends Component
 
     public function store()
     {
+        $this->firstUppercase();
+        $this->lowercase();
         $user = User::create([
             'name'      => $this->name,
             'login'     => $this->login,
@@ -56,6 +58,8 @@ class UserView extends Component
 
     public function update()
     {
+        $this->firstUppercase();
+        $this->lowercase();
         $data = $this->validate([
             'name'              => 'required|string',
             'login'             => 'required|string',
@@ -87,6 +91,17 @@ class UserView extends Component
         $user->delete();
         session()->flash('delete', 'usuário '. $user->name . ' foi exluido com sucesso ;)');
         $this->emit('userDelete');
+    }
+
+    public function firstUppercase()
+    {
+        $this->name = ucwords(strtolower($this->name));
+        $this->post = ucwords(strtolower($this->post));
+    }
+
+    public function lowercase()
+    {
+        $this->login = strtolower($this->login);
     }
 
     public function default()

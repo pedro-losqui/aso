@@ -3,7 +3,6 @@
         <div class="col-xl-8">
             <div class="card">
                 <div class="card-body">
-                    <livewire:aso.components.company-create />
                     <livewire:aso.components.employee-create />
                     <h5 class="card-title">Dados inicias</h5>
                     <form>

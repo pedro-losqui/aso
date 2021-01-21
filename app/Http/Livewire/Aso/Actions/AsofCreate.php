@@ -3,11 +3,10 @@
 namespace App\Http\Livewire\Aso\Actions;
 
 use Livewire\Component;
-use App\Models\Aso;
 
-class AsojCreate extends Component
+class AsofCreate extends Component
 {
-    public $user_id = 1;
+    public $busca = '',  $user_id = 1;
 
     public $type, $company_id, $employee_id, $doctor_id, $conclusion_id, $workplace, $post, $physicist, $chemical, $biological, $ergonomic, $accident, $exam_id, $execution_date;
 
@@ -16,7 +15,7 @@ class AsojCreate extends Component
     protected $rules = [
         'user_id'          => 'required',
         'type'             => 'required|string',
-        'people_id'        => 'required|integer',
+        'company_id'       => 'required|integer',
         'employee_id'      => 'required|integer',
         'doctor_id'        => '',
         'conclusion_id'    => '',
@@ -30,10 +29,10 @@ class AsojCreate extends Component
         'exam_id'          => '',
         'execution_date'   => '',
     ];
-
+    
     public function render()
     {
-        return view('livewire.aso.actions.asoj-create');
+        return view('livewire.aso.actions.asof-create');
     }
 
     public function store()
