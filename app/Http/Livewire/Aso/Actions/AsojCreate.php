@@ -16,7 +16,7 @@ class AsojCreate extends Component
     protected $rules = [
         'user_id'          => 'required',
         'type'             => 'required|string',
-        'people_id'        => 'required|integer',
+        'company_id'       => 'required|integer',
         'employee_id'      => 'required|integer',
         'doctor_id'        => '',
         'conclusion_id'    => '',

@@ -151,6 +151,7 @@ return [
     'attributes' => [
         'type'          => 'tipo de atendimento',
         'company_id'    => 'empresa',
+        'people_id'     => 'pessoa física',
         'employee_id'   => 'colaborador',
         'workplace' => 'ambiente de trabalho',
         'post'      => 'função',          

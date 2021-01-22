@@ -9,7 +9,7 @@ class SelectEmployee extends Component
 {
     public $busca;
 
-    public $employees, $cpf;
+    public $employees, $cpf, $alert;
 
     protected $listeners = ['editEmployee'];
 
@@ -30,8 +30,9 @@ class SelectEmployee extends Component
     public function editEmployee($id)
     {
         $employee = Employee::find($id);
-        $this->busca        = $employee->name;
-        $this->cpf          = $employee->cpf;
+        $this->busca    = $employee->name;
+        $this->cpf      = $employee->cpf;
+        $this->alert    = false;
     }
 
 
@@ -40,13 +41,18 @@ class SelectEmployee extends Component
         $this->employees = Employee::where('name', 'LIKE', "%{$this->busca}%")
         ->orWhere('cpf', 'LIKE', "%{$this->busca}%")
         ->get();
+
+        if (count($this->employees) == 0) {
+            $this->alert = true;
+        }
     }
 
     public function selectEmployee($id, $name, $cpf)
     {
-        $this->busca     = $name;
-        $this->cpf       = $cpf;
-        $this->employees = '';
+        $this->busca        = $name;
+        $this->cpf          = $cpf;
+        $this->employees    = '';
+        $this->alert        = false;
         $this->emit('selectEmployee', $id);
     }
 
@@ -55,6 +61,7 @@ class SelectEmployee extends Component
         $this->busca     = '';
         $this->cpf       = '';
         $this->employees = '';
+        $this->alert     = false;
         $this->emit('selectEmployeeClear', null);
     }
 }

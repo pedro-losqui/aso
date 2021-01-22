@@ -4,10 +4,14 @@
         <input type="text" wire:model.debounce.500ms='busca' class="form-control" placeholder="Colaborador">
         <div class="input-group-append">
             @if($employees  || $busca)
-                <button class="btn btn-danger" type="button" wire:click='selectClear'><i class="fas fa-times-circle"></i></button>
+                <button class="btn btn-danger" type="button" wire:click='selectClear'><i
+                        class="fas fa-times-circle"></i></button>
             @endif
         </div>
     </div>
+    @if($alert)
+        <span class="badge badge-secondary mt-2">Nenhum registro encontrado.</span>
+    @endif
     @if($cpf)
         <span class="badge badge-success">CPF: {{ $cpf }}</span>
     @endif

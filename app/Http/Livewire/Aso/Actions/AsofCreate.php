@@ -3,19 +3,20 @@
 namespace App\Http\Livewire\Aso\Actions;
 
 use Livewire\Component;
+use App\Models\Aso;
 
 class AsofCreate extends Component
 {
     public $busca = '',  $user_id = 1;
 
-    public $type, $company_id, $employee_id, $doctor_id, $conclusion_id, $workplace, $post, $physicist, $chemical, $biological, $ergonomic, $accident, $exam_id, $execution_date;
+    public $type, $people_id, $employee_id, $doctor_id, $conclusion_id, $workplace, $post, $physicist, $chemical, $biological, $ergonomic, $accident, $exam_id, $execution_date;
 
-    protected $listeners = ['selectCompany', 'selectEmployee', 'selectDoctor','selectConclusion', 'selectCompanyClear', 'selectEmployeeClear', 'selectExams', 'selectExamsClear'];
+    protected $listeners = ['selectPeople', 'selectEmployee', 'selectDoctor','selectConclusion', 'selectPeopleClear', 'selectEmployeeClear', 'selectExams', 'selectExamsClear'];
 
     protected $rules = [
         'user_id'          => 'required',
         'type'             => 'required|string',
-        'company_id'       => 'required|integer',
+        'people_id'        => 'required|integer',
         'employee_id'      => 'required|integer',
         'doctor_id'        => '',
         'conclusion_id'    => '',
@@ -47,17 +48,17 @@ class AsofCreate extends Component
 
         session()->flash('success', 'Aso do colaborador(a): '. $aso->employee->name .' foi gerado com sucesso :)');
         $this->emit('asoStore');
-        return redirect()->to('/asoj');
+        return redirect()->to('/asof');
     }
 
-    public function selectCompany($id)
+    public function selectPeople($id)
     {
-        $this->company_id = $id;
+        $this->people_id = $id;
     }
     
-    public function selectCompanyClear($id)
+    public function selectPeopleClear($id)
     {
-        $this->company_id = $id;
+        $this->people_id = $id;
     }
 
     public function selectEmployee($id)

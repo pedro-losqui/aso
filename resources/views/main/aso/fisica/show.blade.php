@@ -77,8 +77,8 @@
                                     <div class="col-md-2">
                                         <div class="float-left">
                                             <address class="font-13">
-                                                <strong class="font-15">CNPJ:</strong><br>
-                                                {{ $aso->company->cnpj }}
+                                                <strong class="font-15">CPF:</strong><br>
+                                                {{ $aso->people->cpf }}
                                                 <hr style="border-top: dotted 1px; width: 1162px;">
                                             </address>
                                         </div>
@@ -86,8 +86,8 @@
                                     <div class="col-md-10">
                                         <div class="">
                                             <address class="font-13">
-                                                <strong class="font-15">Empresa:</strong><br>
-                                                {{ $aso->company->name }}
+                                                <strong class="font-15">Contratante:</strong><br>
+                                                {{ $aso->people->name }}
                                                 <br>
                                                 <br>
                                             </address>
@@ -350,8 +350,8 @@
                                 <div class="col-md-2">
                                     <div class="float-left">
                                         <address class="font-13">
-                                            <strong class="font-15">CNPJ:</strong><br>
-                                            {{ $aso->company->cnpj }}
+                                            <strong class="font-15">CPF:</strong><br>
+                                            {{ $aso->people->cpf }}
                                             <hr style="border-top: dotted 1px; width: 1162px;">
                                         </address>
                                     </div>
@@ -359,8 +359,8 @@
                                 <div class="col-md-10">
                                     <div class="">
                                         <address class="font-13">
-                                            <strong class="font-15">Empresa:</strong><br>
-                                            {{ $aso->company->name }}
+                                            <strong class="font-15">Contratante:</strong><br>
+                                            {{ $aso->people->name }}
                                             <br>
                                             <br>
                                         </address>

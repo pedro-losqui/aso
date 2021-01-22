@@ -3,19 +3,20 @@
         <div class="col-xl-8">
             <div class="card">
                 <div class="card-body">
+                    <livewire:aso.components.people-create />
                     <livewire:aso.components.employee-create />
                     <h5 class="card-title">Dados inicias</h5>
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-11">
-                                <livewire:aso.components.select-company />
-                                @error('company_id')
+                                <livewire:aso.components.select-people />
+                                @error('people_id')
                                     <span class="badge badge-danger mt-2" style="font-size: 11px">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group col-md-1">
                                 <label>Cadastro</label>
-                                <button type="button" data-toggle="modal" data-target=".createCompanyAso"
+                                <button type="button" data-toggle="modal" data-target=".createPeopleAso"
                                     class="btn btn-success btn-lg btn-block" style="height: 41px"><i
                                         class="fas fa-plus-square"></i></button>
                             </div>

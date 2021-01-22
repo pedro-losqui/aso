@@ -9,7 +9,7 @@ class SelectCompany extends Component
 {
     public $busca;
 
-    public $company, $companies, $cnpj;
+    public $company, $companies, $cnpj, $alert;
 
     protected $listeners = ['editCompany'];
 
@@ -32,6 +32,7 @@ class SelectCompany extends Component
         $company = Company::find($id);
         $this->busca        = $company->name;
         $this->cnpj         = $company->cnpj;
+        $this->alert        = false;
     }
 
     public function searchCompany()
@@ -39,6 +40,10 @@ class SelectCompany extends Component
         $this->companies = Company::where('name', 'LIKE', "%{$this->busca}%")
         ->orWhere('cnpj', 'LIKE', "%{$this->busca}%")
         ->get();
+
+        if (count($this->companies) == 0) {
+            $this->alert = true;
+        }
     }
 
     public function selectCompany($id, $name, $cnpj)
@@ -46,6 +51,7 @@ class SelectCompany extends Component
         $this->busca        = $name;
         $this->cnpj         = $cnpj;
         $this->companies    = '';
+        $this->alert        = false;
         $this->emit('selectCompany', $id);
     }
 
@@ -54,6 +60,7 @@ class SelectCompany extends Component
         $this->busca     = '';
         $this->cnpj      = '';
         $this->companies = '';
+        $this->alert     = false;
         $this->emit('selectCompanyClear', null);
     }
 
