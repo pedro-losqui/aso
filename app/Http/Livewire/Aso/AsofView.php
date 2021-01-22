@@ -16,8 +16,19 @@ class AsofView extends Component
             ->whereHas('people', function($query) {
                 $query->where('name', 'LIKE', "%{$this->busca}%");
             })
+            ->whereDate('created_at', '=', date('Y-m-d'))
             ->orderBy('id', 'DESC')
             ->get()
         ]);
+    }
+
+    public function edit($id)
+    {
+        $this->emit('edit', $id);
+    }
+
+    public function clear()
+    {
+        $this->busca = '';
     }
 }

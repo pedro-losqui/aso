@@ -7,7 +7,7 @@ use App\Models\Aso;
 
 class AsojEdit extends Component
 {
-    public $busca = '',  $user_id = 1;
+    public $busca,  $user_id = 1;
 
     public $aso_id, $type, $company_id, $employee_id, $doctor_id, $conclusion_id, $workplace, $post, $physicist, $chemical, $biological, $ergonomic, $accident, $exam_id, $execution_date;
 

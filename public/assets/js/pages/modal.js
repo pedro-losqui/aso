@@ -60,6 +60,10 @@ window.livewire.on('employeeStoreAso', () => {
     $('.createEmployeeAso').modal('hide');
 });
 
+window.livewire.on('peopleStoreAso', () => {
+    $('.createPeopleAso').modal('hide');
+});
+
 window.livewire.on('asoStore', () => {
     setTimeout(function () {
         $('.alert-success').fadeOut();

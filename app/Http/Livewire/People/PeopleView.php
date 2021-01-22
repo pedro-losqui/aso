@@ -72,7 +72,7 @@ class PeopleView extends Component
 
     public function uppercase()
     {
-        $this->name = strtoupper($this->name);
+        $this->name = ucwords(strtolower($this->name));
     }
 
     public function default()

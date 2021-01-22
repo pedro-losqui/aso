@@ -30,8 +30,8 @@ class SelectPeople extends Component
     public function editPeople($id)
     {
         $people = People::find($id);
-        $this->busca    = $employee->name;
-        $this->cpf      = $employee->cpf;
+        $this->busca    = $people->name;
+        $this->cpf      = $people->cpf;
         $this->alert    = false;
     }
 
@@ -61,6 +61,6 @@ class SelectPeople extends Component
         $this->cpf      = '';
         $this->people   = '';
         $this->alert    = false;
-        $this->emit('selectEmployeeClear', null);
+        $this->emit('PeopleClear', null);
     }
 }

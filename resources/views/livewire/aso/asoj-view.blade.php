@@ -47,7 +47,7 @@
                                     <hr>
                             </li>
                             <li>
-                                <a href="{{ route('asojshow', $item->id) }}" class="btn btn-success">Imprimir</a>
+                                <a href="{{ route('asojshow', $item->id) }}" target="_blank" class="btn btn-success">Imprimir</a>
                                 <button type="button" data-toggle="modal" wire:click="edit('{{ $item->id }}')" data-target=".editAsoJ"  class="btn btn-secondary">Alterar</button>
                             </li>
                         </ul>

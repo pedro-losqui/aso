@@ -16,6 +16,7 @@ class AsojView extends Component
             ->whereHas('employee', function($query) {
                 $query->where('name', 'LIKE', "%{$this->busca}%");
             })
+            ->whereDate('created_at', '=', date('Y-m-d'))
             ->orderBy('id', 'DESC')
             ->get()
         ]);

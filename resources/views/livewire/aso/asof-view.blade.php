@@ -1,6 +1,6 @@
 <div>
     
-    <livewire:aso.actions.asoj-edit />
+    <livewire:aso.actions.asof-edit />
 
     <div class="row">
         <div class="col-sm">
@@ -47,8 +47,8 @@
                                     <hr>
                             </li>
                             <li>
-                                <a href="{{ route('asofshow', $item->id) }}" class="btn btn-success">Imprimir</a>
-                                <button type="button" data-toggle="modal" wire:click="edit('{{ $item->id }}')" data-target=".editAsoJ"  class="btn btn-secondary">Alterar</button>
+                                <a href="{{ route('asofshow', $item->id) }}" target="_blank" class="btn btn-success">Imprimir</a>
+                                <button type="button" data-toggle="modal" wire:click="edit('{{ $item->id }}')" data-target=".editAsoF"  class="btn btn-secondary">Alterar</button>
                             </li>
                         </ul>
                     </div>
