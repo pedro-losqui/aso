@@ -13,7 +13,7 @@ class AsofView extends Component
     {
         return view('livewire.aso.asof-view',[
             'aso' => Aso::whereNotNull('people_id')
-            ->whereHas('people', function($query) {
+            ->whereHas('employee', function($query) {
                 $query->where('name', 'LIKE', "%{$this->busca}%");
             })
             ->whereDate('created_at', '=', date('Y-m-d'))

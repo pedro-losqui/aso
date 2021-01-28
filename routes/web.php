@@ -18,3 +18,4 @@ Route::get('/asof',             'Main\AsoFController@index')->name('asof');
 Route::get('/asofcreate',       'Main\AsoFController@create')->name('asofcreate');
 Route::get('/asofedit',         'Main\AsoFController@create')->name('asofedit');
 Route::get('/asofshow/{id}',    'Main\AsoFController@show')->name('asofshow');
+Route::get('/asoarchive',       'Main\AsoArchiveController@index')->name('asoarchive');

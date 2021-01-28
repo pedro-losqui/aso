@@ -25,7 +25,7 @@
         <ul class="sub-menu">
             <li><a href="{{ route('asoj') }}">Pessoa Jurídica</a></li>
             <li><a href="{{ route('asof') }}">Pessoa Física</a></li>
-            <li><a href="#">Histórico</a></li>
+            <li><a href="{{ route('asoarchive') }}">Histórico</a></li>
         </ul>
     </li>
     <li>
