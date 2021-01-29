@@ -150,9 +150,12 @@ return [
 
     'attributes' => [
         'type'          => 'tipo de atendimento',
+        'company'       => 'empresa',
         'company_id'    => 'empresa',
         'people_id'     => 'pessoa física',
+        'employee'      => 'colaborador',
         'employee_id'   => 'colaborador',
+        'allocation'    => 'alocação',
         'workplace' => 'ambiente de trabalho',
         'post'      => 'função',          
         'address'   => 'endereço',

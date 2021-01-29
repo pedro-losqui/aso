@@ -13,7 +13,7 @@ class EmployeeCreate extends Component
 
     protected $rules = [
         'user_id'      => 'required',
-        'cpf'          => 'required|string|unique:employees',
+        'cpf'          => 'required|cpf|string|unique:employees',
         'name'         => 'required|string',
         'born_date'    => 'required|date',
         'gender'       => 'required',

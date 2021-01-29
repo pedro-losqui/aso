@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Aso\Components;
+namespace App\Http\Livewire\Input\Components;
 
 use Livewire\Component;
 use App\Models\Company;
@@ -10,8 +10,6 @@ class SelectCompany extends Component
     public $busca;
 
     public $company, $companies, $cnpj, $alert;
-
-    protected $listeners = ['editCompany'];
 
     public function updated()
     {
@@ -24,7 +22,7 @@ class SelectCompany extends Component
 
     public function render()
     {
-        return view('livewire.aso.components.select-company');
+        return view('livewire.input.components.select-company');
     }
 
     public function editCompany($id)
@@ -46,13 +44,13 @@ class SelectCompany extends Component
         }
     }
 
-    public function selectCompany($id, $name, $cnpj)
+    public function selectCompany($name, $cnpj)
     {
         $this->busca        = $name;
         $this->cnpj         = $cnpj;
         $this->companies    = '';
         $this->alert        = false;
-        $this->emit('selectCompany', $id);
+        $this->emit('selectCompany', $name);
     }
 
     public function selectClear()

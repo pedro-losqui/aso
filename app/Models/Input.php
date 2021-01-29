@@ -10,6 +10,6 @@ class Input extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'user_id', 'type', 'employee', 'company', 'allocation', 'status',
     ];
 }

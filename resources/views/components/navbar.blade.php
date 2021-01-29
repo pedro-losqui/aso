@@ -33,11 +33,9 @@
             <i class="menu-icon icon-drawer"></i><span>Exames</span><i class="accordion-icon fas fa-angle-left"></i>
         </a>
         <ul class="sub-menu">
-            <li><a href="#">Alocar</a></li>
+            <li><a href="{{ route('input') }}">Alocar</a></li>
             <li><a href="#">Liberar</a></li>
-            <li role="separator" class="divider" style="border-top: 1px dotted rgba(0,0,0,.1); width: 3.2cm; margin: 0 auto;"></li>
-            <li><a href="#">Registro Entrada</a></li>
-            <li><a href="#">Registro Saída</a></li>
+            <li><a href="#">Histórico</a></li>
         </ul>
     </li>
     <li>

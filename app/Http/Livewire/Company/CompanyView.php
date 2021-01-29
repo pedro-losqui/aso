@@ -16,7 +16,7 @@ class CompanyView extends Component
 
     protected $rules = [
         'user_id'      => 'required',
-        'cnpj'         => 'required|string|unique:companies',
+        'cnpj'         => 'required|cnpj|string|unique:companies',
         'name'         => 'required|string',
     ];
 
@@ -75,7 +75,7 @@ class CompanyView extends Component
 
     public function uppercase()
     {
-        $this->name = strtoupper($this->name);
+        $this->name = mb_strtoupper($this->name, 'UTF-8');
     }
 
     public function default()

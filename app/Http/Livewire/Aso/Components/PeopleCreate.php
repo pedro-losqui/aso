@@ -13,7 +13,7 @@ class PeopleCreate extends Component
 
     protected $rules = [
         'user_id'      => 'required',
-        'cpf'          => 'required|string|unique:people',
+        'cpf'          => 'required|cpf|string|unique:people',
         'name'         => 'required|string',
     ];
 

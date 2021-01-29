@@ -70,6 +70,14 @@ window.livewire.on('asoStore', () => {
     }, 2000);
 });
 
+window.livewire.on('allocationStore', () => {
+    $('.allocationExam').modal('hide');
+    setTimeout(function () {
+        $('.alert-success').fadeOut();
+    }, 2000);
+});
+
+
 
 /*
 ------------------------------------

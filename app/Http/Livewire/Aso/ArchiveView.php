@@ -9,7 +9,7 @@ class ArchiveView extends Component
 {
     public $start, $end;
 
-    public $busca, $asoj, $asof, $aso;
+    public $busca, $asoj, $asof, $aso = [];
 
     public function mount()
     {
