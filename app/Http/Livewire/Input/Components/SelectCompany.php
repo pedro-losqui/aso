@@ -11,6 +11,8 @@ class SelectCompany extends Component
 
     public $company, $companies, $cnpj, $alert;
 
+    protected $listeners = ['selectClear'];
+
     public function updated()
     {
         if (strlen($this->busca) >  1) {

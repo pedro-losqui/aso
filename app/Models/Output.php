@@ -10,6 +10,6 @@ class Output extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'input_id', 'user_id', 'rg', 'responsible_name'
     ];
 }

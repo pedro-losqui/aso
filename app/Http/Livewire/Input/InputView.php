@@ -26,10 +26,14 @@ class InputView extends Component
     public function render()
     {
         return view('livewire.input.input-view', [
-            'inputs' => Input::Where('employee', 'LIKE', "%{$this->busca}%")
+            'inputs' => Input::where('status', 'Alocado')
             ->whereDate('created_at', '=', date('Y-m-d'))
+            ->where(function ($query) {
+                $query->orWhere('employee', 'LIKE', "%{$this->busca}%")
+                      ->orWhere('company', 'LIKE', "%{$this->busca}%");
+            })
             ->orderBy('id', 'DESC')
-            ->paginate(15)
+            ->get()
         ]);
     }
 
@@ -70,6 +74,7 @@ class InputView extends Component
         $this->employee     = '';
         $this->company      = '';
         $this->allocation   = '';
+        $this->emit('selectClear');
     }
 
     public function clear()

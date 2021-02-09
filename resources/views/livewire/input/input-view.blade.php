@@ -54,7 +54,7 @@
                                         </td>
                                         <td>
                                             {{ $item->company }} <br/>
-                                            <small><strong>Alocação: </strong><span class="badge badge-danger">{{ $item->allocation }}</span></small>
+                                            <small><strong>Alocação: </strong></small><span class="badge badge-danger" style="font-size: 9px">{{ $item->allocation }}</span>
                                         </td>
                                         <td>
                                             <span class="badge badge-success">{{ $item->status }}</span>

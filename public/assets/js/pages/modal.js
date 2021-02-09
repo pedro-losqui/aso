@@ -77,6 +77,13 @@ window.livewire.on('allocationStore', () => {
     }, 2000);
 });
 
+window.livewire.on('releaseStore', () => {
+    $('.releaseExam').modal('hide');
+    setTimeout(function () {
+        $('.alert-success').fadeOut();
+    }, 2000);
+});
+
 
 
 /*
