@@ -12,4 +12,14 @@ class Output extends Model
     protected $fillable = [
         'input_id', 'user_id', 'rg', 'responsible_name'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function input()
+    {
+        return $this->belongsTo(Input::class);
+    }
 }

@@ -11,6 +11,6 @@
     <h1 class="page-title">Histórico</h1>
 </div>
 
-<livewire:aso.archive-view/>
+<livewire:archive.archive-view/>
 
 @endsection

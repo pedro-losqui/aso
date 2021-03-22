@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <div class="input-group">
                         <input type="text" wire:model='busca' class="form-control search-input"
-                            placeholder="Buscar aso...">
+                            placeholder="Buscar exame...">
                         @if($busca)
                             <div class="input-group-append">
                                 <button class="btn btn-primary" wire:click='clear' type="button" id="button-addon1"><i
@@ -30,14 +30,14 @@
             <div class="card">
                 <div class="card-body">
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" wire:model='asoj' wire:click='activeAsoJ' class="custom-control-input"
+                        <input type="checkbox" wire:model='input' wire:click='activeInput' class="custom-control-input"
                             id="customSwitch1">
-                        <label class="custom-control-label" for="customSwitch1">Aso pessoa jurídica</label>
+                        <label class="custom-control-label" for="customSwitch1">Exame(s) alocado(s)</label>
                     </div>
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" wire:model='asof' wire:click='activeAsoF' class="custom-control-input"
-                            id="customSwitch2">
-                        <label class="custom-control-label" for="customSwitch2">Aso pessoa física</label>
+                        <input type="checkbox" wire:model='output' wire:click='activeOutput'
+                            class="custom-control-input" id="customSwitch2">
+                        <label class="custom-control-label" for="customSwitch2">Exame(s) liberado(s)</label>
                     </div>
                 </div>
             </div>
@@ -46,25 +46,20 @@
 
     @include('components.alert')
 
-    @if($asoj)
+    @if($input)
         <div class="row">
-            @forelse($aso as $item)
+            @forelse($exams as $item)
                 <div class="col-md-3">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">#ID: {{ $item->id }}</h5>
                             <ul class="list-unstyled profile-about-list">
-                                <li><i class="fas fa-user-tag mr-3 mt-1"></i><span><strong>Colaborador:
-                                        </strong>{{ $item->employee->name }}
-                                        <br />
-                                        <small><strong>CPF: </strong>{{ $item->employee->cpf }}</small></span>
-                                    <hr>
-                                </li>
-                                <li>
-                                    <a href="{{ route('asojshow', $item->id) }}"
-                                        target="_blank" class="btn btn-success">Imprimir</a>
-                                    <button type="button" data-toggle="modal" wire:click="edit('{{ $item->id }}')"
-                                        data-target=".editAsoJ" class="btn btn-secondary">Alterar</button>
+                                <li><i class="accordion-icon fas fa-user"></i><span>{{ $item->employee }}</span></li>
+                                <li style="font-size: 10px"><i class="accordion-icon fas fa-building"></i><span><a
+                                            href="#">{{ $item->company }}</a></span></li>
+                                <li><i class="accordion-icon fas fa-toggle-off"></i><span><strong>Alocado por:
+                                        </strong>{{ $item->user->name }}</span></li>
+                                <li><i
+                                        class="accordion-icon fas fa-calendar-alt"></i><span>{{ $item->created_at->format('d/m/Y') }}</span>
                                 </li>
                             </ul>
                         </div>
@@ -80,25 +75,20 @@
         </div>
     @endif
 
-    @if($asof)
+    @if($output)
         <div class="row">
-            @forelse($aso as $item)
+            @forelse($exams as $item)
                 <div class="col-md-3">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">#ID: {{ $item->id }}</h5>
                             <ul class="list-unstyled profile-about-list">
-                                <li><i class="fas fa-user-tag mr-3 mt-1"></i><span><strong>Colaborador:
-                                        </strong>{{ $item->employee->name }}
-                                        <br />
-                                        <small><strong>CPF: </strong>{{ $item->employee->cpf }}</small></span>
-                                    <hr>
-                                </li>
-                                <li>
-                                    <a href="{{ route('asofshow', $item->id) }}"
-                                        target="_blank" class="btn btn-success">Imprimir</a>
-                                    <button type="button" data-toggle="modal" wire:click="edit('{{ $item->id }}')"
-                                        data-target=".editAsoF" class="btn btn-secondary">Alterar</button>
+                                <li><i class="accordion-icon fas fa-user"></i><span>{{ $item->input->employee }}</span></li>
+                                <li style="font-size: 10px"><i class="accordion-icon fas fa-building"></i><span><a
+                                            href="#">{{ $item->input->company }}</a></span></li>
+                                <li><i class="accordion-icon fas fa-toggle-on"></i><span><strong>Liberado por:
+                                        </strong>{{ $item->user->name }}</span></li>
+                                <li><i
+                                        class="accordion-icon fas fa-calendar-alt"></i><span>{{ $item->created_at->format('d/m/Y') }}</span>
                                 </li>
                             </ul>
                         </div>

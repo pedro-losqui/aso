@@ -21,4 +21,4 @@ Route::get('/asofshow/{id}',    'Main\AsoFController@show')->name('asofshow');
 Route::get('/asoarchive',       'Main\AsoArchiveController@index')->name('asoarchive');
 Route::get('/input',            'Main\InputController@index')->name('input');
 Route::get('/output',           'Main\OutputController@index')->name('output');
-Route::get('/archiverelease',   'Main\ArchiveController@index')->name('archiverelease');
+Route::get('/examarchive',      'Main\ArchiveController@index')->name('examarchive');

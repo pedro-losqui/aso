@@ -35,7 +35,7 @@
         <ul class="sub-menu">
             <li><a href="{{ route('input') }}">Alocar</a></li>
             <li><a href="{{ route('output') }}">Liberar</a></li>
-            <li><a href="#">Histórico</a></li>
+            <li><a href="{{ route('examarchive') }}">Histórico</a></li>
         </ul>
     </li>
     <li>
