@@ -43,14 +43,14 @@
             <i class="menu-icon icon-ticket"></i><span>Recepção</span><i class="accordion-icon fas fa-angle-left"></i>
         </a>
         <ul class="sub-menu">
-            <li><a href="#">Registro</a></li>
-            <li><a href="#">Histórico</a></li>
+            <li><a href="{{ route('attendance') }}">Registro</a></li>
+            <li><a href="{{ route('attendancearchive') }}">Histórico</a></li>
         </ul>
     </li>
     <li class="menu-divider"></li>
     <li>
         <a href="#">
-            <i class="menu-icon icon-switch"></i><span>Documentation</span>
+            <i class="menu-icon icon-switch"></i><span></span>
         </a>
     </li>
 </ul>

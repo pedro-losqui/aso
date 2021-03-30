@@ -149,6 +149,7 @@ return [
     */
 
     'attributes' => [
+        'ticket'        => 'senha',
         'type'          => 'tipo de atendimento',
         'company'       => 'empresa',
         'company_id'    => 'empresa',

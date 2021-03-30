@@ -274,7 +274,7 @@
                                         <div class="float-left">
                                             @if($aso->doctor)
                                                 <address class="font-13">
-                                                    <strong class="font-14">Médico(a) do Trabalho -Coord. do
+                                                    <strong class="font-14">Médico(a) do Trabalho - Coord. do
                                                         PCMSO</strong><br>
                                                     Dr(a). {{ $aso->doctor->name }} <br>
                                                     CRM: {{ $aso->doctor->crm }}/{{ $aso->doctor->uf }} <br>

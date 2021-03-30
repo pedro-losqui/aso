@@ -84,7 +84,11 @@ window.livewire.on('releaseStore', () => {
     }, 2000);
 });
 
-
+window.livewire.on('attendanceStore', () => {
+    setTimeout(function () {
+        $('.alert-success').fadeOut();
+    }, 2000);
+});
 
 /*
 ------------------------------------

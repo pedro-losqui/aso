@@ -35,26 +35,47 @@
             <div class="card">
                 <div class="card-body">
                     <div class="input-group">
-                        <button type="button" wire:click='unselect' class="btn btn-primary btn-lg btn-block"><i class="fas fa-window-close mr-2"></i>Cancelar</button>
+                        <button type="button" wire:click='unselect' class="btn btn-primary btn-lg btn-block"><i
+                                class="fas fa-window-close mr-2"></i>Cancelar</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        @foreach($input as $key => $value)
-            <div class="col-3">
-                <div @if(in_array($value->id, $input_id)) class="card" style="opacity: 35%" @else class="card" @endif>
-                    <div class="card-body">
-                        <h5 class="card-title">Empresa:</h5>
-                        <p class="card-text" style="margin-top: -1.2rem">{{ $value->company }}</p>
-                        <h5 class="card-title">Colaborador:</h5>
-                        <p class="card-text" style="margin-top: -1.2rem">{{ $value->employee }}</p>
-                        <button wire:click="select('{{ $value->id }}')" class="btn btn-info"><i
-                                class="fas fa-check-circle"></i></button>
-                    </div>
+        <div class="col-xl">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Exames alocados</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 1rem">#</th>
+                                <th scope="col">Dados</th>
+                                <th scope="col" style="width: 13rem">Alocação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($input as $key => $value)
+                                <tr @if(in_array($value->id, $input_id)) style="opacity: 35%" @else @endif>
+                                    <th scope="row">
+                                        <button wire:click="select('{{ $value->id }}')" class="btn btn-success"><i
+                                        class="fas fa-check-circle"></i></button>
+                                    </th>
+                                    <td>
+                                        <small style="font-size: 12px"><strong>Colaborador(a): </strong>{{ $value->employee  }}</small><br/>
+                                        <small style="font-size: 12px"><strong>Empresa.............: </strong>{{ $value->company }}</small>
+                                    </td>
+                                    <td>
+                                        <small style="font-size: 13px"><strong>Alocado em: </strong><span class="badge badge-dark">{{ $value->allocation }}</span></small>
+                                        @if(in_array($value->id, $input_id)) <i class="fas fa-check"></i> @else @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        @endforeach
+        </div>
     </div>
 </div>

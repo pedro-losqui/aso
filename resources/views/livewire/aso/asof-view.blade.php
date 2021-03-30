@@ -38,19 +38,37 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">#ID: {{ $item->id }}</h5>
-                        <ul class="list-unstyled profile-about-list">
-                            <li><i class="fas fa-user-tag mr-3 mt-1"></i><span><strong>Colaborador:
-                                    </strong>{{ $item->employee->name }}
-                                    <br />
-                                    <small><strong>CPF: </strong>{{ $item->employee->cpf }}</small></span>
-                                    <hr>
-                            </li>
-                            <li>
-                                <a href="{{ route('asofshow', $item->id) }}" target="_blank" class="btn btn-success">Imprimir</a>
-                                <button type="button" data-toggle="modal" wire:click="edit('{{ $item->id }}')" data-target=".editAsoF"  class="btn btn-secondary">Alterar</button>
-                            </li>
-                        </ul>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ASO #ID: {{ $item->id }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><i
+                                            class="fas fa-user-tag mr-2"></i><span>{{ $item->employee->name }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i
+                                            class="fas fa-id-card mr-2"></i><span>{{ $item->employee->cpf }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i
+                                            class="fas fa-calendar-alt mr-2"></i><span>{{ $item->created_at->format('d/m/Y') }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <br/>
+                                        <a href="{{ route('asofshow', $item->id) }}" target="_blank" class="btn btn-secondary">Imprimir</a>
+                                        <button type="button" data-toggle="modal" wire:click="edit('{{ $item->id }}')" data-target=".editAsoF" class="btn btn-primary">Editar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

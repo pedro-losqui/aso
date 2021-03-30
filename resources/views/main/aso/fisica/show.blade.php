@@ -86,7 +86,7 @@
                                     <div class="col-md-10">
                                         <div class="">
                                             <address class="font-13">
-                                                <strong class="font-15">Contratante:</strong><br>
+                                                <strong class="font-15">Empregador:</strong><br>
                                                 {{ $aso->people->name }}
                                                 <br>
                                                 <br>
@@ -274,7 +274,7 @@
                                         <div class="float-left">
                                             @if($aso->doctor)
                                                 <address class="font-13">
-                                                    <strong class="font-14">Médico(a) do Trabalho -Coord. do
+                                                    <strong class="font-14">Médico(a) do Trabalho - Coord. do
                                                         PCMSO</strong><br>
                                                     Dr(a). {{ $aso->doctor->name }} <br>
                                                     CRM: {{ $aso->doctor->crm }}/{{ $aso->doctor->uf }} <br>
@@ -359,7 +359,7 @@
                                 <div class="col-md-10">
                                     <div class="">
                                         <address class="font-13">
-                                            <strong class="font-15">Contratante:</strong><br>
+                                            <strong class="font-15">Empregador:</strong><br>
                                             {{ $aso->people->name }}
                                             <br>
                                             <br>

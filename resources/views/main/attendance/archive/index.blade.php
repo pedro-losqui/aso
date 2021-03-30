@@ -5,12 +5,12 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-style-1">
             <li class="breadcrumb-item"><a href="#">Gesto</a></li>
-            <li class="breadcrumb-item active" aria-current="page">ASO Pessoa Física</li>
+            <li class="breadcrumb-item active" aria-current="page">Registo</li>
         </ol>
     </nav>
-    <h1 class="page-title">ASO</h1>
+    <h1 class="page-title">Registo</h1>
 </div>
 
-<livewire:aso.asof-view/>
+<livewire:attendance.attendance-view />
 
 @endsection
