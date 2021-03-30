@@ -48,6 +48,7 @@ class ArchiveView extends Component
         })
         ->whereBetween('created_at', [$this->start, $this->end])
         ->orderBy('id', 'DESC')
+        ->take(20)
         ->get();
     }
 
@@ -67,6 +68,7 @@ class ArchiveView extends Component
         })
         ->whereBetween('created_at', [$this->start, $this->end])
         ->orderBy('id', 'DESC')
+        ->take(20)
         ->get();
     }
 

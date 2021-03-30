@@ -9,7 +9,7 @@ class AttendanceArchiveController extends Controller
 {
     public function index()
     {
-        return view ('main.attendance.index');
+        return view ('main.attendance.archive.index');
     }
 
 }

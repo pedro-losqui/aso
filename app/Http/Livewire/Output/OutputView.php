@@ -35,7 +35,7 @@ class OutputView extends Component
                       ->orWhere('company', 'LIKE', "%{$this->busca}%");
             })
             ->orderBy('id', 'DESC')
-            ->get()
+            ->paginate(10)
         ]);
     }
 

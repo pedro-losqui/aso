@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Input;
 
+use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Input;
 
@@ -33,7 +34,7 @@ class InputView extends Component
                       ->orWhere('company', 'LIKE', "%{$this->busca}%");
             })
             ->orderBy('id', 'DESC')
-            ->get()
+            ->paginate(10)
         ]);
     }
 

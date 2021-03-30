@@ -46,6 +46,7 @@ class ArchiveView extends Component
         $this->exams = Input::whereBetween('created_at', [$this->start, $this->end])
         ->Where('employee', 'LIKE', "%{$this->busca}%")
         ->orderBy('id', 'DESC')
+        ->take(20)
         ->get();
     }
 
@@ -64,6 +65,7 @@ class ArchiveView extends Component
             $query->where('employee', 'LIKE', "%{$this->busca}%");
         })
         ->orderBy('id', 'DESC')
+        ->take(20)
         ->get();
     }
 

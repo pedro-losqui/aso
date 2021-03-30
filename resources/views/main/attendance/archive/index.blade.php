@@ -11,6 +11,6 @@
     <h1 class="page-title">Registo</h1>
 </div>
 
-<livewire:attendance.attendance-view />
+<livewire:attendance.attendence-archive />
 
 @endsection

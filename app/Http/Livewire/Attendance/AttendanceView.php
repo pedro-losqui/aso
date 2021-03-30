@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Attendance;
 
+use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Attendance;
 
@@ -23,6 +24,8 @@ class AttendanceView extends Component
         return view('livewire.attendance.attendance-view', [
             'records' => Attendance::where('company', 'LIKE', "%{$this->busca}%")
             ->orWhere('employee', 'LIKE', "%{$this->busca}%")
+            ->orWhere('company', 'LIKE', "%{$this->busca}%")
+            ->orWhere('ticket', 'LIKE', "%{$this->busca}%")
             ->orderBy('id', 'DESC')
             ->paginate(10)
         ]);

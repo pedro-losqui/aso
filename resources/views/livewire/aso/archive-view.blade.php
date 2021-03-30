@@ -1,4 +1,7 @@
 <div>
+    <livewire:aso.actions.asof-edit />
+    <livewire:aso.actions.asoj-edit />
+
     <div class="row">
         <div class="col-sm-6">
             <div class="card">
