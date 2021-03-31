@@ -22,10 +22,12 @@ class AttendanceView extends Component
     public function render()
     {
         return view('livewire.attendance.attendance-view', [
-            'records' => Attendance::where('company', 'LIKE', "%{$this->busca}%")
-            ->orWhere('employee', 'LIKE', "%{$this->busca}%")
-            ->orWhere('company', 'LIKE', "%{$this->busca}%")
-            ->orWhere('ticket', 'LIKE', "%{$this->busca}%")
+            'records' => Attendance::whereDay('created_at', '=', date('d-m-Y'))
+            ->where(function($query) {
+                $query->orWhere('ticket', 'LIKE', "%{$this->busca}%")
+                      ->orWhere('employee', 'LIKE', "%{$this->busca}%")
+                      ->orWhere('company', 'LIKE', "%{$this->busca}%");
+            })
             ->orderBy('id', 'DESC')
             ->paginate(10)
         ]);
