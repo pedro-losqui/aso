@@ -49,7 +49,10 @@
     </li>
     <li class="menu-divider"></li>
     <li>
-        <a href="#">
+        <form id="logout" action="{{ route('logout') }}" method="post">
+            @csrf
+        </form>
+        <a href="#" onClick="document.getElementById('logout').submit();">
             <i class="menu-icon icon-switch"></i><span></span>
         </a>
     </li>

@@ -8,6 +8,11 @@ use App\Models\Aso;
 
 class AsoFController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         return view ('main.aso.fisica.index');

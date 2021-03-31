@@ -61,9 +61,7 @@
 
             <div class="page-inner no-page-title">
                 <div id="main-wrapper">
-
                     @yield('content')
-
                 </div>
 
                 <div class="page-footer">
@@ -80,7 +78,9 @@
     <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/jquery.mask.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}">
-    <script src="{{ asset('assets/js/pages/form-masking-custom.js') }}"></script>
+        < script src = "{{ asset('assets/js/pages/form-masking-custom.js') }}" >
+
+    </script>
     <script src="{{ asset('assets/plugins/mask/jquery.mask.min.js') }}"></script>
     <script src="{{ asset('assets/js/pagekit.min.js') }}"></script>
     <livewire:scripts />

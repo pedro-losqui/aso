@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/',                     'Main\DashController@index')->name('home');
+Route::get('/',                     'Auth\LoginController@index')->name('login');
+Route::post('/auth',                'Auth\LoginController@authenticate')->name('auth');
+Route::post('/logout',              'Auth\LoginController@logout')->name('logout');
+
+Route::get('/home',                 'Main\DashController@index')->name('home');
 Route::get('/employee',             'Main\EmployeeController@index')->name('employee');
 Route::get('/company',              'Main\CompanyController@index')->name('company');
 Route::get('/people',               'Main\PeopleController@index')->name('people');

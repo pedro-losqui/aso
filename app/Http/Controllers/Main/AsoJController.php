@@ -8,6 +8,12 @@ use App\Models\Aso;
 
 class AsoJController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         return view ('main.aso.juridica.index');

@@ -24,11 +24,10 @@
             @yield('content')
         </div>
         
-        <script src="../../assets/plugins/jquery/jquery-3.1.0.min.js"></script>
-        <script src="../../assets/plugins/bootstrap/popper.min.js"></script>
-        <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-        <script src="../../assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="../../assets/plugins/switchery/switchery.min.js"></script>
-        <script src="../../assets/js/pagekit.min.js"></script>
+        <script src="{{ asset('assets/plugins/jquery/jquery-3.1.0.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/bootstrap/popper.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+        <script src="{{ asset('assets/js/pagekit.min.js') }}"></script>
     </body>
 </html>
