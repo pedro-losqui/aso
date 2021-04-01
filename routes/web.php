@@ -28,3 +28,5 @@ Route::get('/output',               'Main\OutputController@index')->name('output
 Route::get('/examarchive',          'Main\ArchiveController@index')->name('examarchive');
 Route::get('/attendance',           'Main\AttendanceController@index')->name('attendance');
 Route::get('/attendancearchive',    'Main\AttendanceArchiveController@index')->name('attendancearchive');
+Route::get('/profile',              'Main\ProfileController@index')->name('profile');
+Route::get('/permission',           'Main\PermissionController@index')->name('permission');

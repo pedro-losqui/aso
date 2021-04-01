@@ -78,7 +78,7 @@
                 <div class="card-body" style="height: 130.5px">
                     <div class="form-group col-md">
                         <div class="input-group">
-                            <button type="submit" style="margin-top: 19px;" wire:click='store'
+                            <button style="margin-top: 19px;" wire:click='store'
                                 class="btn btn-primary btn-lg btn-block">Salvar</button>
                         </div>
                     </div>

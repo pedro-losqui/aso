@@ -15,7 +15,6 @@
             <li><a href="{{ route('medic') }}">Médico</a></li>
             <li><a href="{{ route('exam') }}">Exame</a></li>
             <li><a href="{{ route('conclusion') }}">Parecer</a></li>
-            <li><a href="{{ route('user') }}">Usuário</a></li>
         </ul>
     </li>
     <li class="active-page">
@@ -48,6 +47,17 @@
         </ul>
     </li>
     <li class="menu-divider"></li>
+    <li>
+        <a href="javascript:void(0)">
+            <i class="menu-icon icon-cog"></i><span>Recepção</span><i class="accordion-icon fas fa-angle-left"></i>
+        </a>
+        <ul class="sub-menu">
+            <li><a href="{{ route('profile') }}">Perfil</a></li>
+            <li><a href="{{ route('user') }}">Usuário</a></li>
+            <li><a href="{{ route('permission') }}">Permissão</a></li>
+            <li><a href="{{ route('attendancearchive') }}">Regras de Acesso</a></li>
+        </ul>
+    </li>
     <li>
         <form id="logout" action="{{ route('logout') }}" method="post">
             @csrf
