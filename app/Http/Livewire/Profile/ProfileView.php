@@ -25,7 +25,7 @@ class ProfileView extends Component
         $this->firstUppercase();
         $role = Role::create($this->validate());
         session()->flash('success', 'Perfil gerado com sucesso ;)');
-        $this->emit('profileceStore');
+        $this->emit('profileStore');
         $this->default();
     }
 

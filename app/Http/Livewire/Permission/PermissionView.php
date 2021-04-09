@@ -7,6 +7,11 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionView extends Component
 {
+    public $permission = [
+    'colaborador', 'empresa', 'pessoa.fisica', 'medico', 'exames', 'parecer', 'aso.juridica', 'aso.fisica', 'historico.aso', 'alocar', 
+    'liberar', 'historico.liberacao', 'resgistro', 'historico.registro', 'perfil', 'usuario', 'permissao', 'regra.acesso'
+    ];
+    
     public $name;
 
     protected $rules = [
@@ -31,7 +36,7 @@ class PermissionView extends Component
 
     public function firstUppercase()
     {
-        $this->name = ucwords(strtolower($this->name));
+        $this->name = strtolower($this->name);
         
     }
 

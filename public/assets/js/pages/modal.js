@@ -90,6 +90,30 @@ window.livewire.on('attendanceStore', () => {
     }, 2000);
 });
 
+window.livewire.on('attendanceStore', () => {
+    setTimeout(function () {
+        $('.alert-success').fadeOut();
+    }, 2000);
+});
+
+window.livewire.on('permissionStore', () => {
+    setTimeout(function () {
+        $('.alert-success').fadeOut();
+    }, 2000);
+});
+
+window.livewire.on('profileStore', () => {
+    setTimeout(function () {
+        $('.alert-success').fadeOut();
+    }, 2000);
+});
+
+window.livewire.on('accessStore', () => {
+    setTimeout(function () {
+        $('.alert-success').fadeOut();
+    }, 2000);
+});
+
 /*
 ------------------------------------
 Update
@@ -146,6 +170,12 @@ window.livewire.on('conclusionUpdate', () => {
 
 window.livewire.on('userUpdate', () => {
     $('.editUser').modal('hide');
+    setTimeout(function () {
+        $('.alert-warning').fadeOut();
+    }, 2000);
+});
+
+window.livewire.on('accessRevoke', () => {
     setTimeout(function () {
         $('.alert-warning').fadeOut();
     }, 2000);

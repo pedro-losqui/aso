@@ -55,7 +55,7 @@
             <li><a href="{{ route('profile') }}">Perfil</a></li>
             <li><a href="{{ route('user') }}">Usuário</a></li>
             <li><a href="{{ route('permission') }}">Permissão</a></li>
-            <li><a href="{{ route('attendancearchive') }}">Regras de Acesso</a></li>
+            <li><a href="{{ route('access') }}">Regras de Acesso</a></li>
         </ul>
     </li>
     <li>

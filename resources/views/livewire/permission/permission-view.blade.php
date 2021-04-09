@@ -35,279 +35,36 @@
     @include('components.alert')
 
     <div class="row">
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Colaborador</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Colaborador'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
+        @for($i = 0; $i <= 17; $i++)
+            <div class="col-xl-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $permission[$i] }}</h5>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 1cm;">ID</th>
+                                    <th scope="col">Permissão</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($permissions as $item)
+                                    <tr>
+                                        @if(stristr($item->name, $permission[$i]))
+                                            <th scope="row">{{ $item->id }}</th>
+                                            <td>{{ $item->name }}</td>
+                                        @endif
+                                    </tr>
+                                @empty
+                                    <div class="alert alert-dark" role="alert">
+                                        Ops:( Nenhum registro foi encontrado!
+                                    </div>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Empresa</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Empresa'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Pessoa Física</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Pessoa-f'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Médico</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Medico'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Exames</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Exames'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Parecer</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Parecer'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Usuário</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Usuario'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>ASO</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Aso'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Histórico Aso</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Aso-h'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Liberação</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Liberar'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Alocar</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Alocar'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Histórico Exames</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Exame-h'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Registro</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Registro'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Histórico de Registro</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Registro-h'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Perfil</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Perfil'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Permissão</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Permissão'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="help-topics">
-                <h3>Regra de Acesso</h3>
-                <ul class="list-unstyled">
-                    @forelse($permissions as $item)
-                        @if(stristr($item->name, 'Regra-a'))
-                            <li><a href="#">{{ $item->name }}</a></li>
-                        @endif
-                    @empty
-                        <div class="alert alert-dark" role="alert">
-                            Ops:( Nenhum registro foi encontrado!
-                        </div>
-                    @endforelse
-                </ul>
-            </div>
-        </div>
+        @endfor
     </div>
-
-    <br />
 </div>

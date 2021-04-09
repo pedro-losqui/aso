@@ -2,13 +2,17 @@
 
 namespace App\Http\Livewire\People;
 
-use Livewire\WithPagination;
-use Livewire\Component;
 use App\Models\People;
+use Livewire\Component;
+use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class PeopleView extends Component
 {
-    public $busca = '', $user_id = 1;
+    use AuthorizesRequests;
+
+    public $busca = '', $user_id;
 
     public $people_id, $cpf, $name;
 
@@ -18,8 +22,15 @@ class PeopleView extends Component
         'name'         => 'required|string',
     ];
 
+    public function mount()
+    {
+       $this->user_id = Auth::user()->id;
+    }
+
     public function render()
     {
+        $this->authorize('pessoa.fisica.ver', Auth::user()->can('pessoa.fisica.ver'));
+
         return view('livewire.people.people-view', [
             'people' => People::where('name', 'LIKE', "%{$this->busca}%")
             ->orWhere('cpf', 'LIKE', "%{$this->busca}%")
@@ -30,6 +41,8 @@ class PeopleView extends Component
 
     public function store()
     {
+        $this->authorize('pessoa.fisica.criar', Auth::user()->can('pessoa.fisica.criar'));
+
         $this->uppercase();
         $people = People::create($this->validate());
         session()->flash('success', 'Pessoa física '. $people->name . ' registrada com sucesso ;)');
@@ -39,6 +52,8 @@ class PeopleView extends Component
 
     public function edit($id)
     {
+        $this->authorize('pessoa.fisica.editar', Auth::user()->can('pessoa.fisica.editar'));
+
         $people = People::find($id);
         $this->people_id   = $people->id;
         $this->cpf         = $people->cpf;
@@ -64,6 +79,8 @@ class PeopleView extends Component
 
     public function delete($id)
     {
+        $this->authorize('pessoa.fisica.excluir', Auth::user()->can('pessoa.fisica.excluir'));
+
         $people = People::find($id);
         $people->delete();
         session()->flash('delete', 'Pessoa física '. $people->name . ' foi exluida com sucesso ;)');

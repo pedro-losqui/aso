@@ -48,6 +48,7 @@
                                     <th scope="col" style="width: 2cm">#ID</th>
                                     <th scope="col">Usuário</th>
                                     <th scope="col">Setor</th>
+                                    <th scope="col">Perfil</th>
                                     <th scope="col" style="width: 3cm">Ação</th>
                                 </tr>
                             </thead>
@@ -57,6 +58,7 @@
                                         <th scope="row">{{ $item->id }}</th>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->post }}</td>
+                                        <td>{{ $item->role }}</td>
                                         <td>
                                             <button type="button" wire:click='edit({{ $item->id }})'
                                                 data-toggle="modal" data-target=".editUser"

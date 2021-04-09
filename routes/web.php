@@ -30,3 +30,4 @@ Route::get('/attendance',           'Main\AttendanceController@index')->name('at
 Route::get('/attendancearchive',    'Main\AttendanceArchiveController@index')->name('attendancearchive');
 Route::get('/profile',              'Main\ProfileController@index')->name('profile');
 Route::get('/permission',           'Main\PermissionController@index')->name('permission');
+Route::get('/access',                'Main\AccessController@index')->name('access');

@@ -2,15 +2,17 @@
 
 namespace App\Http\Livewire\Company;
 
-use Livewire\WithPagination;
-use Livewire\Component;
 use App\Models\Company;
+use Livewire\Component;
+use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class CompanyView extends Component
 {
-    use WithPagination;
+    use WithPagination, AuthorizesRequests;
 
-    public $busca = '', $user_id = 1;
+    public $busca = '', $user_id;
 
     public $company_id, $cnpj, $name;
 
@@ -20,9 +22,15 @@ class CompanyView extends Component
         'name'         => 'required|string',
     ];
 
+    public function mount()
+    {
+       $this->user_id = Auth::user()->id;
+    }
 
     public function render()
     {
+        $this->authorize('empresa.ver', Auth::user()->can('empresa.ver'));
+
         return view('livewire.company.company-view', [
             'companies' => Company::where('name', 'LIKE', "%{$this->busca}%")
             ->orWhere('cnpj', 'LIKE', "%{$this->busca}%")
@@ -33,6 +41,8 @@ class CompanyView extends Component
 
     public function store()
     {
+        $this->authorize('empresa.criar', Auth::user()->can('empresa.criar'));
+
         $this->uppercase();
         $comapany = Company::create($this->validate());
         session()->flash('success', 'Empresa '. $comapany->name . ' registrada com sucesso ;)');
@@ -50,6 +60,8 @@ class CompanyView extends Component
 
     public function update()
     {
+        $this->authorize('empresa.editar', Auth::user()->can('empresa.editar'));
+        
         $this->uppercase();
         
         $data = $this->validate([
@@ -67,6 +79,8 @@ class CompanyView extends Component
 
     public function delete($id)
     {
+        $this->authorize('empresa.excluir', Auth::user()->can('empresa.excluir'));
+
         $company = Company::find($id);
         $company->delete();
         session()->flash('delete', 'Empresa '. $company->name . ' foi exluida com sucesso ;)');

@@ -2,15 +2,18 @@
 
 namespace App\Http\Livewire\Employee;
 
-use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Employee;
+use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Collection;
 
 class EmployeeView extends Component
 {
-    use WithPagination;
+    use WithPagination, AuthorizesRequests;
 
-    public $busca = '', $user_id = 1;
+    public $busca = '', $user_id;
 
     public $employee_id, $cpf, $name, $born_date, $gender;
 
@@ -22,8 +25,15 @@ class EmployeeView extends Component
         'gender'       => 'required',
     ];
 
+    public function mount()
+    {
+       $this->user_id = Auth::user()->id;
+    }
+
     public function render()
     {
+        $this->authorize('colaborador.ver', Auth::user()->can('colaborador.ver'));
+        
         return view('livewire.employee.employee-view', [
             'employees' => Employee::where('name', 'LIKE', "%{$this->busca}%")
             ->orWhere('cpf', 'LIKE', "%{$this->busca}%")
@@ -34,6 +44,8 @@ class EmployeeView extends Component
 
     public function store()
     {
+        $this->authorize('colaborador.criar', Auth::user()->can('colaborador.criar'));
+
         $this->firstUppercase();
         $employee = Employee::create($this->validate());
         session()->flash('success', 'Colaborador(a) '. $employee->name . ' registrado com sucesso ;)');
@@ -53,6 +65,8 @@ class EmployeeView extends Component
 
     public function update()
     {
+        $this->authorize('colaborador.editar', Auth::user()->can('colaborador.editar'));
+        
         $this->uppercase();
 
         $data = $this->validate([
@@ -72,6 +86,8 @@ class EmployeeView extends Component
 
     public function delete($id)
     {
+        $this->authorize('colaborador.excluir', Auth::user()->can('colaborador.excluir'));
+
         $employee = Employee::find($id);
         $employee->delete();
         session()->flash('delete', 'Colaborador(a) '. $employee->name . ' foi exluido com sucesso ;)');

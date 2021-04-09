@@ -5,10 +5,14 @@ namespace App\Http\Livewire\Medic;
 use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Doctor;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class MedicView extends Component
 {
-    public $busca = '', $user_id = 1;
+    use AuthorizesRequests;
+
+    public $busca = '', $user_id;
 
     public $doctor_id, $name, $crm, $uf;
 
@@ -19,8 +23,15 @@ class MedicView extends Component
         'uf'         => 'required|string',
     ];
 
+    public function mount()
+    {
+       $this->user_id = Auth::user()->id;
+    }
+
     public function render()
     {
+        $this->authorize('medico.ver', Auth::user()->can('medico.ver'));
+
         return view('livewire.medic.medic-view', [
             'medics' => Doctor::where('name', 'LIKE', "%{$this->busca}%")
             ->orderBy('id', 'DESC')
@@ -30,6 +41,8 @@ class MedicView extends Component
 
     public function store()
     {
+        $this->authorize('medico.criar', Auth::user()->can('medico.criar'));
+
         $this->firstUppercase();
         $doctor = Doctor::create($this->validate());
         session()->flash('success', 'Médico(a) '. $doctor->name . ' registrado com sucesso ;)');
@@ -48,6 +61,8 @@ class MedicView extends Component
 
     public function update()
     {
+        $this->authorize('medico.editar', Auth::user()->can('medico.editar'));
+
         $this->uppercase();
 
         $data = $this->validate([
@@ -66,6 +81,8 @@ class MedicView extends Component
 
     public function delete($id)
     {
+        $this->authorize('medico.excluir', Auth::user()->can('medico.excluir'));
+
         $medic = Doctor::find($id);
         $medic->delete();
         session()->flash('delete', 'Médico(a) '. $medic->name . ' foi exluido com sucesso ;)');

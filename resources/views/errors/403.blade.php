@@ -9,7 +9,7 @@
                 <h3>403</h3>
             </div>
             <div class="error-body">
-                <p>Parece que a página que você está procurando não existe mais.<br></p>
+                <p>Parece que você não tem permissão para realizar esta operação.<br></p>
             </div>
             <div class="error-footer">
                 <p>{{ date('Y') }} &copy; Gesto </span><span

@@ -5,10 +5,14 @@ namespace App\Http\Livewire\Conclusion;
 use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Conclusion;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ConclusionView extends Component
 {
-    public $busca = '', $user_id = 1;
+    use AuthorizesRequests;
+
+    public $busca = '', $user_id;
 
     public $conclusion_id, $description;
 
@@ -17,8 +21,15 @@ class ConclusionView extends Component
         'description'   => 'required|string',
     ];
 
+    public function mount()
+    {
+       $this->user_id = Auth::user()->id;
+    }
+
     public function render()
     {
+        $this->authorize('parecer.ver', Auth::user()->can('parecer.ver'));
+
         return view('livewire.conclusion.conclusion-view', [
             'conclusions' => Conclusion::where('description', 'LIKE', "%{$this->busca}%")
             ->orderBy('id', 'DESC')
@@ -28,6 +39,8 @@ class ConclusionView extends Component
 
     public function store()
     {
+        $this->authorize('parecer.criar', Auth::user()->can('parecer.criar'));
+
         $this->firstUppercase();
         $conclusion = Conclusion::create($this->validate());
         session()->flash('success', 'Parecer '. $conclusion->description . ' registrado com sucesso ;)');
@@ -44,6 +57,8 @@ class ConclusionView extends Component
 
     public function update()
     {
+        $this->authorize('parecer.editar', Auth::user()->can('parecer.editar'));
+
         $data = $this->validate([
             'user_id'       => 'required',
             'description'   => 'required|string'
@@ -58,6 +73,8 @@ class ConclusionView extends Component
 
     public function delete($id)
     {
+        $this->authorize('parecer.excluir', Auth::user()->can('parecer.excluir'));
+
         $conclusion = Conclusion::find($id);
         $conclusion->delete();
         session()->flash('delete', 'Parecer '. $conclusion->description . ' foi exluido com sucesso ;)');

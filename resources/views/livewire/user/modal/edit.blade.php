@@ -33,6 +33,18 @@
                             <span class="badge badge-danger mt-2" style="font-size: 11px">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Perfil de acesso</label>
+                        <select class="form-control custom-select" wire:model='profile' id="exampleFormControlSelect1">
+                            <option>Selecione o perfil</option>
+                            @foreach($profiles as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('profile')
+                        <span class="badge badge-danger mt-2" style="font-size: 11px">{{ $message }}</span>
+                    @enderror
+                    </div>
                     <hr>
                     <div class="custom-control custom-switch">
                         <input type="checkbox" wire:model='reset' class="custom-control-input" id="customSwitch1">

@@ -5,10 +5,14 @@ namespace App\Http\Livewire\Exam;
 use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Exam;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ExamView extends Component
 {
-    public $busca = '', $user_id = 1;
+    use AuthorizesRequests;
+
+    public $busca = '', $user_id;
 
     public $exam_id, $description;
 
@@ -17,8 +21,15 @@ class ExamView extends Component
         'description'   => 'required|string',
     ];
 
+    public function mount()
+    {
+       $this->user_id = Auth::user()->id;
+    }
+
     public function render()
     {
+        $this->authorize('exame.ver', Auth::user()->can('exame.ver'));
+
         return view('livewire.exam.exam-view', [
             'exams' => Exam::where('description', 'LIKE', "%{$this->busca}%")
             ->orderBy('id', 'DESC')
@@ -28,6 +39,8 @@ class ExamView extends Component
 
     public function store()
     {
+        $this->authorize('exame.criar', Auth::user()->can('exame.criar'));
+
         $this->firstUppercase();
         $exam = Exam::create($this->validate());
         session()->flash('success', 'Exame '. $exam->description . ' registrado com sucesso ;)');
@@ -44,6 +57,8 @@ class ExamView extends Component
 
     public function update()
     {
+        $this->authorize('exame.editar', Auth::user()->can('exame.editar'));
+
         $data = $this->validate([
             'user_id'       => 'required',
             'description'   => 'required|string'
@@ -58,6 +73,8 @@ class ExamView extends Component
 
     public function delete($id)
     {
+        $this->authorize('exame.excluir', Auth::user()->can('exame.excluir'));
+
         $exam = Exam::find($id);
         $exam->delete();
         session()->flash('delete', 'Exame '. $exam->description . ' foi exluido com sucesso ;)');

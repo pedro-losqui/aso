@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\User;
 
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\User;
@@ -11,7 +12,7 @@ class UserView extends Component
 {
     public $busca = '', $reset = false;
 
-    public $user_id, $name, $login, $password, $password_confirm, $avatar, $post;
+    public $user_id, $name, $login, $password, $password_confirm, $avatar, $post, $profile, $profiles = [];
 
     protected $rules = [
         'name'              => 'required|string',
@@ -54,6 +55,7 @@ class UserView extends Component
         $this->name        = $user->name;
         $this->login       = $user->login;
         $this->post        = $user->post;
+        $this->profiles    = Role::all();
     }
 
     public function update()
@@ -63,11 +65,12 @@ class UserView extends Component
         $data = $this->validate([
             'name'              => 'required|string',
             'login'             => 'required|string',
-            'post'              => 'required|string'
+            'post'              => 'required|string',
         ]);
 
         $user = User::find($this->user_id);
         $user->update($data);
+        $user->assignRole($this->profile);
 
         if ($this->password) {
             
@@ -77,6 +80,7 @@ class UserView extends Component
             ]);
 
             $user->password = Hash::make($this->password);
+            $user->assignRole($this->profile);
             $user->update();
         }
 
