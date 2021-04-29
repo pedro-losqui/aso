@@ -28,7 +28,7 @@ class ExamView extends Component
 
     public function render()
     {
-        $this->authorize('exame.ver', Auth::user()->can('exame.ver'));
+        $this->authorize('exames.ver', Auth::user()->can('exame.ver'));
 
         return view('livewire.exam.exam-view', [
             'exams' => Exam::where('description', 'LIKE', "%{$this->busca}%")
@@ -39,7 +39,7 @@ class ExamView extends Component
 
     public function store()
     {
-        $this->authorize('exame.criar', Auth::user()->can('exame.criar'));
+        $this->authorize('exame.criar', Auth::user()->can('exames.criar'));
 
         $this->firstUppercase();
         $exam = Exam::create($this->validate());
@@ -57,7 +57,7 @@ class ExamView extends Component
 
     public function update()
     {
-        $this->authorize('exame.editar', Auth::user()->can('exame.editar'));
+        $this->authorize('exame.editar', Auth::user()->can('exames.editar'));
 
         $data = $this->validate([
             'user_id'       => 'required',
@@ -73,7 +73,7 @@ class ExamView extends Component
 
     public function delete($id)
     {
-        $this->authorize('exame.excluir', Auth::user()->can('exame.excluir'));
+        $this->authorize('exames.excluir', Auth::user()->can('exames.excluir'));
 
         $exam = Exam::find($id);
         $exam->delete();

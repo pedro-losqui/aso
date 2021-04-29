@@ -5,9 +5,13 @@ namespace App\Http\Livewire\Archive;
 use Livewire\Component;
 use App\Models\Input;
 use App\Models\Output;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ArchiveView extends Component
 {
+    use AuthorizesRequests;
+
     public $start, $end;
 
     public $busca, $input, $output, $exams = [];
@@ -30,6 +34,8 @@ class ArchiveView extends Component
 
     public function render()
     {
+        $this->authorize('historico.liberacao.criar', Auth::user()->can('historico.liberacao.criar'));
+        
         return view('livewire.archive.archive-view');
     }
 

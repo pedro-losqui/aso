@@ -81,8 +81,7 @@
                                         <td>
                                             <a href="{{ route('asojshow', $item->id) }}"
                                                 target="_blank" class="btn btn-secondary">Imprimir</a>
-                                            <button type="button" data-toggle="modal"
-                                                wire:click="edit('{{ $item->id }}')" data-target=".editAsoJ"
+                                            <button type="button" wire:click="editJ('{{ $item->id }}')" 
                                                 class="btn btn-primary">Editar</button>
                                         </td>
                                     </tr>
@@ -134,8 +133,7 @@
                                         <td>
                                             <a href="{{ route('asofshow', $item->id) }}"
                                                 target="_blank" class="btn btn-secondary">Imprimir</a>
-                                            <button type="button" data-toggle="modal"
-                                                wire:click="edit('{{ $item->id }}')" data-target=".editAsoF"
+                                            <button type="button" wire:click="editF('{{ $item->id }}')"
                                                 class="btn btn-primary">Editar</button>
                                         </td>
                                     </tr>

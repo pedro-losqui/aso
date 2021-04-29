@@ -15,7 +15,7 @@ class AsofView extends Component
 
     public function render()
     {
-        $this->authorize('aso.juridico.ver', Auth::user()->can('aso.juridico.ver'));
+        $this->authorize('aso.fisica.ver', Auth::user()->can('aso.fisica.ver'));
 
         return view('livewire.aso.asof-view',[
             'aso' => Aso::whereNotNull('people_id')
@@ -28,9 +28,9 @@ class AsofView extends Component
         ]);
     }
 
-    public function edit($id)
+    public function editF($id)
     {
-        $this->emit('edit', $id);
+        $this->emit('editF', $id);
     }
 
     public function clear()

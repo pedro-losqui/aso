@@ -4,9 +4,13 @@ namespace App\Http\Livewire\Aso\Actions;
 
 use Livewire\Component;
 use App\Models\Aso;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AsojCreate extends Component
 {
+    use AuthorizesRequests;
+
     public $user_id = 1;
 
     public $type, $company_id, $employee_id, $doctor_id, $conclusion_id, $workplace, $post, $physicist, $chemical, $biological, $ergonomic, $accident, $exam_id, $execution_date;
@@ -38,6 +42,8 @@ class AsojCreate extends Component
 
     public function store()
     {   
+        $this->authorize('aso.juridica.ver', Auth::user()->can('aso.juridica.ver'));
+        
         $this->uppercase();
 
         $aso = Aso::create($this->validate());
@@ -45,9 +51,6 @@ class AsojCreate extends Component
         foreach ($this->exam_id as $key => $value) {
             $aso->exams()->attach($this->exam_id[$key], ['execution_date' => $this->execution_date[$key] ]);
         }
-
-        session()->flash('success', 'Aso do colaborador(a): '. $aso->employee->name .' foi gerado com sucesso :)');
-        $this->emit('asoStore');
         return redirect()->to('/asoj');
     }
 

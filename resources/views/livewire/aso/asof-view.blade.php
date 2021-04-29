@@ -64,7 +64,7 @@
                                     <td>
                                         <br/>
                                         <a href="{{ route('asofshow', $item->id) }}" target="_blank" class="btn btn-secondary">Imprimir</a>
-                                        <button type="button" data-toggle="modal" wire:click="edit('{{ $item->id }}')" data-target=".editAsoF" class="btn btn-primary">Editar</button>
+                                        <button type="button" wire:click="editF('{{ $item->id }}')" class="btn btn-primary">Editar</button>
                                     </td>
                                 </tr>
                             </tbody>

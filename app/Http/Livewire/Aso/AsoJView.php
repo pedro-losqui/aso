@@ -2,15 +2,21 @@
 
 namespace App\Http\Livewire\Aso;
 
-use Livewire\Component;
 use App\Models\Aso;
+use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AsojView extends Component
 {
+    use AuthorizesRequests;
+    
     public $busca, $results, $employees;
 
     public function render()
     {
+        $this->authorize('aso.juridica.ver', Auth::user()->can('aso.juridica.ver'));
+
         return view('livewire.aso.asoj-view', [
             'aso' => Aso::whereNotNull('company_id')
             ->whereHas('employee', function($query) {
@@ -22,9 +28,9 @@ class AsojView extends Component
         ]);
     }
 
-    public function edit($id)
+    public function editJ($id)
     {
-        $this->emit('edit', $id);
+        $this->emit('editJ', $id);
     }
 
     public function clear()

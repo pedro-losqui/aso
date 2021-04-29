@@ -4,14 +4,18 @@ namespace App\Http\Livewire\Aso\Actions;
 
 use Livewire\Component;
 use App\Models\Aso;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AsojEdit extends Component
 {
+    use AuthorizesRequests;
+    
     public $busca,  $user_id = 1;
 
     public $aso_id, $type, $company_id, $employee_id, $doctor_id, $conclusion_id, $workplace, $post, $physicist, $chemical, $biological, $ergonomic, $accident, $exam_id, $execution_date;
 
-    protected $listeners = ['edit', 'selectCompany', 'selectEmployee', 'selectDoctor','selectConclusion', 'selectCompanyClear', 'selectEmployeeClear', 'selectExams', 'selectExamsClear'];
+    protected $listeners = ['editJ', 'selectCompany', 'selectEmployee', 'selectDoctor','selectConclusion', 'selectCompanyClear', 'selectEmployeeClear', 'selectExams', 'selectExamsClear'];
 
     protected $rules = [
         'user_id'          => 'required',
@@ -36,45 +40,91 @@ class AsojEdit extends Component
         return view('livewire.aso.actions.asoj-edit');
     }
 
-    public function edit($id)
+    public function editJ($id)
     {   
         $aso = Aso::find($id);
-        
-        $this->aso_id           = $aso->id;
-        $this->type             = $aso->type;
-        $this->company_id       = $aso->company_id;
-        $this->employee_id      = $aso->employee_id;
-        $this->doctor_id        = $aso->doctor_id;
-        $this->conclusion_id    = $aso->conclusion_id;
-        $this->workplace        = $aso->workplace;
-        $this->post             = $aso->post;
-        $this->physicist        = $aso->physicist;
-        $this->chemical         = $aso->chemical;
-        $this->biological       = $aso->biological;
-        $this->ergonomic        = $aso->ergonomic;
-        $this->accident         = $aso->accident;
-        $this->exam_id          = $aso->exam_id;
-        $this->execution_date   = $aso->execution_date;
 
-        if (!empty($this->company_id)) {
-            $this->emit('editCompany', $this->company_id);
-        }
-        if (!empty($this->employee_id)) {
-            $this->emit('editEmployee', $this->employee_id);
-        }
-        if (!empty($this->conclusion_id)) {
-            $this->emit('editConclusion', $this->conclusion_id);
-        }
-        if (!empty($this->doctor_id)) {
-            $this->emit('editDoctor', $this->doctor_id);
-        }
-        if (!empty($this->aso_id)) {
-            $this->emit('editExams', $this->aso_id);
+        if (strtotime($aso->created_at->format('Y-m-d')) < strtotime(date('Y-m-d'))) {
+            
+            $this->authorize('aso.juridica.editar.admin', Auth::user()->can('aso.juridica.editar.admin'));
+            
+            $this->aso_id           = $aso->id;
+            $this->type             = $aso->type;
+            $this->company_id       = $aso->company_id;
+            $this->employee_id      = $aso->employee_id;
+            $this->doctor_id        = $aso->doctor_id;
+            $this->conclusion_id    = $aso->conclusion_id;
+            $this->workplace        = $aso->workplace;
+            $this->post             = $aso->post;
+            $this->physicist        = $aso->physicist;
+            $this->chemical         = $aso->chemical;
+            $this->biological       = $aso->biological;
+            $this->ergonomic        = $aso->ergonomic;
+            $this->accident         = $aso->accident;
+            $this->exam_id          = $aso->exam_id;
+            $this->execution_date   = $aso->execution_date;
+
+            if (!empty($this->company_id)) {
+                $this->emit('editCompany', $this->company_id);
+            }
+            if (!empty($this->employee_id)) {
+                $this->emit('editEmployee', $this->employee_id);
+            }
+            if (!empty($this->conclusion_id)) {
+                $this->emit('editConclusion', $this->conclusion_id);
+            }
+            if (!empty($this->doctor_id)) {
+                $this->emit('editDoctor', $this->doctor_id);
+            }
+            if (!empty($this->aso_id)) {
+                $this->emit('editExams', $this->aso_id);
+            }
+
+            $this->emit('editAsoJ');
+        }else{
+            
+            $this->authorize('aso.juridica.editar', Auth::user()->can('aso.juridica.editar'));
+
+            $this->aso_id           = $aso->id;
+            $this->type             = $aso->type;
+            $this->company_id       = $aso->company_id;
+            $this->employee_id      = $aso->employee_id;
+            $this->doctor_id        = $aso->doctor_id;
+            $this->conclusion_id    = $aso->conclusion_id;
+            $this->workplace        = $aso->workplace;
+            $this->post             = $aso->post;
+            $this->physicist        = $aso->physicist;
+            $this->chemical         = $aso->chemical;
+            $this->biological       = $aso->biological;
+            $this->ergonomic        = $aso->ergonomic;
+            $this->accident         = $aso->accident;
+            $this->exam_id          = $aso->exam_id;
+            $this->execution_date   = $aso->execution_date;
+
+            if (!empty($this->company_id)) {
+                $this->emit('editCompany', $this->company_id);
+            }
+            if (!empty($this->employee_id)) {
+                $this->emit('editEmployee', $this->employee_id);
+            }
+            if (!empty($this->conclusion_id)) {
+                $this->emit('editConclusion', $this->conclusion_id);
+            }
+            if (!empty($this->doctor_id)) {
+                $this->emit('editDoctor', $this->doctor_id);
+            }
+            if (!empty($this->aso_id)) {
+                $this->emit('editExams', $this->aso_id);
+            }
+
+            $this->emit('editAsoJ');
         }
     }
 
     public function update()
     {   
+        $this->authorize('aso.juridica.editar', Auth::user()->can('aso.juridica.editar'));
+
         $this->uppercase();
         
         $aso = Aso::find($this->aso_id);
@@ -86,7 +136,6 @@ class AsojEdit extends Component
             $aso->exams()->attach($this->exam_id[$key], ['execution_date' => $this->execution_date[$key] ]);
         }
 
-        session()->flash('update', 'Aso do colaborador(a): '. $aso->employee->name .' foi atualizado com sucesso :)');
         return redirect()->to('/asoj');
 
     }

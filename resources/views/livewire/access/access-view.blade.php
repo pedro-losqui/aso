@@ -33,6 +33,7 @@
                                         <th scope="col" style="width: 1.5cm;">Criar</th>
                                         <th scope="col" style="width: 1.5cm;">Editar</th>
                                         <th scope="col" style="width: 1.5cm;">Excluir</th>
+                                        <th scope="col" style="width: 1.5cm;">Super</th>
                                     </tr>
                                 </thead>
                                 <tbody>

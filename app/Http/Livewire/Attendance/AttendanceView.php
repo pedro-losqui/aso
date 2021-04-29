@@ -5,9 +5,13 @@ namespace App\Http\Livewire\Attendance;
 use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Attendance;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AttendanceView extends Component
 {
+    use AuthorizesRequests;
+
     public $busca, $user_id = 1;
 
     public $company, $employee, $ticket;
@@ -21,6 +25,8 @@ class AttendanceView extends Component
 
     public function render()
     {
+        $this->authorize('resgistro.ver', Auth::user()->can('resgistro.ver'));
+
         return view('livewire.attendance.attendance-view', [
             'records' => Attendance::whereDay('created_at', '=', date('d-m-Y'))
             ->where(function($query) {
@@ -35,6 +41,8 @@ class AttendanceView extends Component
 
     public function store()
     {
+        $this->authorize('resgistro.criar', Auth::user()->can('resgistro.criar'));
+
         $this->firstUppercase();
         $this->checkTicket();
         $attendance = Attendance::create($this->validate());

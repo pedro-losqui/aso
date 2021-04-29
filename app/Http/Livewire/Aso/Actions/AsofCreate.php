@@ -2,11 +2,15 @@
 
 namespace App\Http\Livewire\Aso\Actions;
 
-use Livewire\Component;
 use App\Models\Aso;
+use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AsofCreate extends Component
 {
+    use AuthorizesRequests;
+    
     public $busca = '',  $user_id = 1;
 
     public $type, $people_id, $employee_id, $doctor_id, $conclusion_id, $workplace, $post, $physicist, $chemical, $biological, $ergonomic, $accident, $exam_id, $execution_date;
@@ -38,6 +42,8 @@ class AsofCreate extends Component
 
     public function store()
     {   
+        $this->authorize('aso.fisica.criar', Auth::user()->can('aso.fisica.criar'));
+        
         $this->uppercase();
 
         $aso = Aso::create($this->validate());
@@ -46,8 +52,6 @@ class AsofCreate extends Component
             $aso->exams()->attach($this->exam_id[$key], ['execution_date' => $this->execution_date[$key] ]);
         }
 
-        session()->flash('success', 'Aso do colaborador(a): '. $aso->employee->name .' foi gerado com sucesso :)');
-        $this->emit('asoStore');
         return redirect()->to('/asof');
     }
 

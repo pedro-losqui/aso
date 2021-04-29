@@ -7,7 +7,6 @@ use App\Models\Employee;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Collection;
 
 class EmployeeView extends Component
 {

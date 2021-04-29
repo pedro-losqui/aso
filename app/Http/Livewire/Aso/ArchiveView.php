@@ -72,9 +72,14 @@ class ArchiveView extends Component
         ->get();
     }
 
-    public function edit($id)
+    public function editJ($id)
     {
-        $this->emit('edit', $id);
+        $this->emit('editJ', $id);
+    }
+
+    public function editF($id)
+    {
+        $this->emit('editF', $id);
     }
 
     public function clear()

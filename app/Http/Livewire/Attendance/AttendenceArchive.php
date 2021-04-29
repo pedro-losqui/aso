@@ -5,9 +5,13 @@ namespace App\Http\Livewire\Attendance;
 use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Attendance;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AttendenceArchive extends Component
 {
+    use AuthorizesRequests;
+
     public $start, $end;
 
     public $busca;
@@ -20,6 +24,8 @@ class AttendenceArchive extends Component
 
     public function render()
     {
+        $this->authorize('historico.registro.ver', Auth::user()->can('historico.registro.ver'));
+
         return view('livewire.attendance.attendence-archive', [
             'records' => Attendance::whereBetween('created_at', [$this->start, $this->end])
             ->where(function($query) {

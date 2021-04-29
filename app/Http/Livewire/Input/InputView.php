@@ -5,9 +5,13 @@ namespace App\Http\Livewire\Input;
 use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Input;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class InputView extends Component
 {
+    use AuthorizesRequests;
+
     public $busca, $user_id = 1, $status = 'Alocado';
 
     public $type, $employee, $company, $allocation;
@@ -26,6 +30,8 @@ class InputView extends Component
     
     public function render()
     {
+        $this->authorize('alocar.ver', Auth::user()->can('alocar.ver'));
+
         return view('livewire.input.input-view', [
             'inputs' => Input::where('status', 'Alocado')
             ->whereDate('created_at', '=', date('Y-m-d'))
@@ -40,6 +46,8 @@ class InputView extends Component
 
     public function store()
     {
+        $this->authorize('alocar.criar', Auth::user()->can('alocar.criar'));
+
         $this->uppercase();
         $this->firstUppercase();
         $input = Input::create($this->validate());

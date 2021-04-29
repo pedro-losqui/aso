@@ -5,9 +5,13 @@ namespace App\Http\Livewire\Output;
 use Livewire\Component;
 use App\Models\Input;
 use App\Models\Output;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class OutputView extends Component
 {
+    use AuthorizesRequests;
+    
     public $busca, $user_id = 1, $status = 'Liberado';
 
     public $input_id, $rg, $responsible_name;
@@ -28,6 +32,8 @@ class OutputView extends Component
     
     public function render()
     {
+        $this->authorize('output.ver', Auth::user()->can('output.ver'));
+
         return view('livewire.output.output-view', [
             'input' => Input::where('status', 'Alocado')
             ->where(function ($query) {
@@ -51,6 +57,8 @@ class OutputView extends Component
 
     public function store()
     {
+        $this->authorize('output.criar', Auth::user()->can('output.criar'));
+
         $this->firstUppercase();
         $this->validate();
         foreach ($this->input_id as $key => $value) {

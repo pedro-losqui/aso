@@ -64,11 +64,6 @@ window.livewire.on('peopleStoreAso', () => {
     $('.createPeopleAso').modal('hide');
 });
 
-window.livewire.on('asoStore', () => {
-    setTimeout(function () {
-        $('.alert-success').fadeOut();
-    }, 2000);
-});
 
 window.livewire.on('allocationStore', () => {
     $('.allocationExam').modal('hide');
@@ -103,12 +98,6 @@ window.livewire.on('permissionStore', () => {
 });
 
 window.livewire.on('profileStore', () => {
-    setTimeout(function () {
-        $('.alert-success').fadeOut();
-    }, 2000);
-});
-
-window.livewire.on('accessStore', () => {
     setTimeout(function () {
         $('.alert-success').fadeOut();
     }, 2000);
@@ -154,6 +143,14 @@ window.livewire.on('examUpdate', () => {
     }, 2000);
 });
 
+window.livewire.on('editAsoJ', () => {
+    $('.editAsoJ').modal('show');
+});
+
+window.livewire.on('editAsoF', () => {
+    $('.editAsoF').modal('show');
+});
+
 window.livewire.on('conclusionUpdate', () => {
     $('.editConclusion').modal('hide');
     setTimeout(function () {
@@ -180,7 +177,6 @@ window.livewire.on('accessRevoke', () => {
         $('.alert-warning').fadeOut();
     }, 2000);
 });
-
 
 /*
 ------------------------------------
