@@ -10,4 +10,7 @@
     </nav>
     <h1 class="page-title">Dashboard</h1>
 </div>
+
+<livewire:dashboard.dash-view />
+
 @endsection

@@ -8,7 +8,7 @@
         <div class="form-row">
             <div class="form-group col-md-9">
                 <label for="">Exames</label>
-                <select class="form-control" wire:model='exam_id.{{ $key }}'>
+                <select class="form-control" wire:click='searchExams' wire:model='exam_id.{{ $key }}'>
                     <option value="">Selecione</option>
                     @foreach($exams as $item)
                         <option value="{{ $item->id }}">{{ $item->description }}</option>

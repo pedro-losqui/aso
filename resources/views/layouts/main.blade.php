@@ -25,8 +25,8 @@
     <div class="page-container">
         <div class="page-sidebar">
             <div class="profile-menu">
-                <a href="app-profile.html">
-                    <img src="{{ asset('assets/images/avatars/avatar1.png') }}">
+                <a href="#">
+                    <img src="{{ asset('assets/images/avatars/avatar-unisex.png') }}" width="50px">
                 </a>
             </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="page-content">
             <div class="secondary-sidebar">
                 <div class="secondary-sidebar-bar">
-                    <a href="#" class="logo-box">Gesto</a>
+                    <a href="#" class="logo-box">M</a>
                 </div>
                 <div class="secondary-sidebar-menu">
                     @include('components.navbar')
@@ -49,7 +49,7 @@
                         <div class="navbar-header">
                             <div class="logo-sm">
                                 <a href="javascript:void(0)" id="sidebar-toggle-button"><i class="fas fa-bars"></i></a>
-                                <a class="logo-box" href="index.html"><span>Gesto</span></a>
+                                <a class="logo-box" href="#"><span>M</span></a>
                             </div>
                         </div>
 
