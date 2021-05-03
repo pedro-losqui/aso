@@ -31,7 +31,7 @@ class DashView extends Component
 
     public function asoUsuario()
     {
-        $this->asoUsuario = count(Aso::where('id', Auth::user()->id)->get());
+        $this->asoUsuario = count(Aso::where('user_id', Auth::user()->id)->get());
     }
 
     public function atendimentos()

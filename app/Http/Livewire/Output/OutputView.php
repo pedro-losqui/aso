@@ -12,7 +12,7 @@ class OutputView extends Component
 {
     use AuthorizesRequests;
     
-    public $busca, $user_id = 1, $status = 'Liberado';
+    public $busca, $user_id, $status = 'Liberado';
 
     public $input_id, $rg, $responsible_name;
 
@@ -28,11 +28,12 @@ class OutputView extends Component
     public function mount()
     {
         $this->input_id = [];
+        $this->user_id = Auth::user()->id;
     }
     
     public function render()
     {
-        $this->authorize('output.ver', Auth::user()->can('output.ver'));
+        $this->authorize('liberar.ver', Auth::user()->can('liberar.ver'));
 
         return view('livewire.output.output-view', [
             'input' => Input::where('status', 'Alocado')
@@ -57,7 +58,7 @@ class OutputView extends Component
 
     public function store()
     {
-        $this->authorize('output.criar', Auth::user()->can('output.criar'));
+        $this->authorize('liberar.criar', Auth::user()->can('liberar.criar'));
 
         $this->firstUppercase();
         $this->validate();

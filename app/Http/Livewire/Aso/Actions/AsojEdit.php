@@ -35,6 +35,11 @@ class AsojEdit extends Component
         'execution_date'   => '',
     ];
 
+    public function mount()
+    {
+       $this->user_id = Auth::user()->id;
+    }
+
     public function render()
     {
         return view('livewire.aso.actions.asoj-edit');

@@ -11,7 +11,7 @@ class AsofEdit extends Component
 {
     use AuthorizesRequests;
     
-    public $busca,  $user_id = 1;
+    public $busca,  $user_id;
 
     public $aso_id, $type, $people_id, $employee_id, $doctor_id, $conclusion_id, $workplace, $post, $physicist, $chemical, $biological, $ergonomic, $accident, $exam_id, $execution_date;
 
@@ -34,6 +34,11 @@ class AsofEdit extends Component
         'exam_id'          => '',
         'execution_date'   => '',
     ];
+
+    public function mount()
+    {
+       $this->user_id = Auth::user()->id;
+    }
 
     public function render()
     {

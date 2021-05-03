@@ -11,7 +11,7 @@ class AsojCreate extends Component
 {
     use AuthorizesRequests;
 
-    public $user_id = 1;
+    public $user_id;
 
     public $type, $company_id, $employee_id, $doctor_id, $conclusion_id, $workplace, $post, $physicist, $chemical, $biological, $ergonomic, $accident, $exam_id, $execution_date;
 
@@ -34,6 +34,11 @@ class AsojCreate extends Component
         'exam_id'          => '',
         'execution_date'   => '',
     ];
+    
+    public function mount()
+    {
+       $this->user_id = Auth::user()->id;
+    }
 
     public function render()
     {

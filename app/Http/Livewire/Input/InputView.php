@@ -12,7 +12,7 @@ class InputView extends Component
 {
     use AuthorizesRequests;
 
-    public $busca, $user_id = 1, $status = 'Alocado';
+    public $busca, $user_id, $status = 'Alocado';
 
     public $type, $employee, $company, $allocation;
 
@@ -27,6 +27,10 @@ class InputView extends Component
         'status'        => 'required',
     ];
 
+    public function mount()
+    {
+       $this->user_id = Auth::user()->id;
+    }
     
     public function render()
     {

@@ -12,7 +12,7 @@ class AttendanceView extends Component
 {
     use AuthorizesRequests;
 
-    public $busca, $user_id = 1;
+    public $busca, $user_id;
 
     public $company, $employee, $ticket;
 
@@ -22,6 +22,11 @@ class AttendanceView extends Component
         'employee'  => 'required|string',
         'ticket'    => 'required|string',
     ];
+
+    public function mount()
+    {
+       $this->user_id = Auth::user()->id;
+    }
 
     public function render()
     {
