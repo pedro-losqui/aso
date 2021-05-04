@@ -4,10 +4,14 @@ namespace App\Http\Livewire\Access;
 
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AccessView extends Component
 {
+    use AuthorizesRequests;
+
     public $permission = [
         'colaborador', 'empresa', 'pessoa.fisica', 'medico', 'exames', 'parecer', 'aso.juridica', 'aso.fisica', 'historico.aso', 'alocar', 
         'liberar', 'historico.liberacao', 'resgistro', 'historico.registro', 'perfil', 'usuario', 'permissao', 'regra.acesso'
@@ -28,6 +32,8 @@ class AccessView extends Component
 
     public function render()
     {
+        $this->authorize('regra.acesso.ver', Auth::user()->can('regra.acesso.ver'));
+
         return view('livewire.access.access-view');
     }
 

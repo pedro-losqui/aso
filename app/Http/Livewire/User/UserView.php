@@ -2,14 +2,18 @@
 
 namespace App\Http\Livewire\User;
 
-use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Role;
-use Livewire\WithPagination;
-use Livewire\Component;
 use App\Models\User;
+use Livewire\Component;
+use Livewire\WithPagination;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class UserView extends Component
 {
+    use AuthorizesRequests;
+    
     public $busca = '', $reset = false;
 
     public $user_id, $name, $login, $password, $password_confirm, $avatar, $post, $profile, $profiles = [];
@@ -24,6 +28,8 @@ class UserView extends Component
 
     public function render()
     {
+        $this->authorize('usuario.ver', Auth::user()->can('usuario.ver'));
+
         return view('livewire.user.user-view', [
             'users' => User::where('name', 'LIKE', "%{$this->busca}%")
             ->orWhere('post', 'LIKE', "%{$this->busca}%")
@@ -34,6 +40,8 @@ class UserView extends Component
 
     public function store()
     {
+        $this->authorize('usuario.criar', Auth::user()->can('usuario.criar'));
+
         $this->firstUppercase();
         $this->lowercase();
         $user = User::create([
@@ -50,6 +58,8 @@ class UserView extends Component
 
     public function edit($id)
     {
+        $this->authorize('usuario.editar', Auth::user()->can('usuario.editar'));
+
         $user = User::find($id);
         $this->user_id     = $user->id;
         $this->name        = $user->name;
