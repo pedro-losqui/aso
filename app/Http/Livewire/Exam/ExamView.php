@@ -64,6 +64,7 @@ class ExamView extends Component
             'description'   => 'required|string'
         ]);
 
+        $this->firstUppercase();
         $exam = Exam::find($this->exam_id);
         $exam->update($data);
         session()->flash('update', 'Exame '. $exam->description . ' foi atualizado com sucesso ;)');
