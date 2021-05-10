@@ -59,6 +59,8 @@ class ConclusionView extends Component
     {
         $this->authorize('parecer.editar', Auth::user()->can('parecer.editar'));
 
+        $this->firstUppercase();
+
         $data = $this->validate([
             'user_id'       => 'required',
             'description'   => 'required|string'
