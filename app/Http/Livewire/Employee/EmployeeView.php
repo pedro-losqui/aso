@@ -66,7 +66,7 @@ class EmployeeView extends Component
     {
         $this->authorize('colaborador.editar', Auth::user()->can('colaborador.editar'));
         
-        $this->uppercase();
+        $this->firstUppercase();
 
         $data = $this->validate([
             'user_id'      => 'required',
