@@ -58,13 +58,14 @@ class ExamView extends Component
     public function update()
     {
         $this->authorize('exames.editar', Auth::user()->can('exames.editar'));
+        
+        $this->firstUppercase();
 
         $data = $this->validate([
             'user_id'       => 'required',
             'description'   => 'required|string'
         ]);
 
-        $this->firstUppercase();
         $exam = Exam::find($this->exam_id);
         $exam->update($data);
         session()->flash('update', 'Exame '. $exam->description . ' foi atualizado com sucesso ;)');
