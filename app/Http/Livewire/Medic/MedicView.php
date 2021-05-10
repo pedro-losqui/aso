@@ -63,7 +63,7 @@ class MedicView extends Component
     {
         $this->authorize('medico.editar', Auth::user()->can('medico.editar'));
 
-        $this->uppercase();
+        $this->firstUppercase();
 
         $data = $this->validate([
             'user_id'      => 'required',
