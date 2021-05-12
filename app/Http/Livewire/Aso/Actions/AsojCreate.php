@@ -104,14 +104,14 @@ class AsojCreate extends Component
 
     public function uppercase()
     {
-        $this->workplace    = ucwords(strtolower($this->workplace));
-        $this->post         = ucwords(strtolower($this->post));
+        $this->workplace    = ucwords(mb_strtolower($this->workplace, 'UTF-8'));
+        $this->post         = ucwords(mb_strtolower($this->post, 'UTF-8'));
 
-        $this->physicist    = ucwords(strtolower($this->physicist));
-        $this->chemical     = ucwords(strtolower($this->chemical));
-        $this->biological   = ucwords(strtolower($this->biological));
-        $this->ergonomic    = ucwords(strtolower($this->ergonomic));
-        $this->accident     = ucwords(strtolower($this->accident));
+        $this->physicist    = ucwords(mb_strtolower($this->physicist, 'UTF-8'));
+        $this->chemical     = ucwords(mb_strtolower($this->chemical, 'UTF-8'));
+        $this->biological   = ucwords(mb_strtolower($this->biological, 'UTF-8'));
+        $this->ergonomic    = ucwords(mb_strtolower($this->ergonomic, 'UTF-8'));
+        $this->accident     = ucwords(mb_strtolower($this->accident, 'UTF-8'));
     }
 
     public function clear()

@@ -85,8 +85,7 @@ class ExamView extends Component
 
     public function firstUppercase()
     {
-        $words = strtolower($this->description);
-        $this->description = ucwords($words);
+        $this->description = ucwords(mb_strtolower($this->description, 'UTF-8'));
     }
 
     public function default()

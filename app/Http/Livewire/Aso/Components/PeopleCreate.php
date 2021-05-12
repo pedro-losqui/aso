@@ -41,7 +41,7 @@ class PeopleCreate extends Component
 
     public function uppercase()
     {
-        $this->name = ucwords(strtolower($this->name));
+        $this->name = ucwords(mb_strtolower($this->name, 'UTF-8'));
     }
 
     public function default()

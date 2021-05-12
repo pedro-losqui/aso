@@ -98,7 +98,7 @@ class OutputView extends Component
 
     public function firstUppercase()
     {
-        $this->responsible_name = ucwords(strtolower($this->responsible_name));
+        $this->responsible_name = ucwords(mb_strtolower($this->responsible_name, 'UTF-8'));
     }
 
     public function default()

@@ -91,8 +91,7 @@ class MedicView extends Component
 
     public function firstUppercase()
     {
-        $words = strtolower($this->name);
-        $this->name = ucwords($words);
+        $this->name = ucwords(mb_strtolower($this->name, 'UTF-8'));
     }
 
     public function default()

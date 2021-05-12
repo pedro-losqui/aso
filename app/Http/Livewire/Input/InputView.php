@@ -78,7 +78,7 @@ class InputView extends Component
 
     public function firstUppercase()
     {
-        $this->employee = ucwords(strtolower($this->employee));
+        $this->employee = ucwords(mb_strtolower($this->employee, 'UTF-8'));
     }
 
     public function default()
