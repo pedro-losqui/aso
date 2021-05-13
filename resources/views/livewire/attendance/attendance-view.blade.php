@@ -77,10 +77,15 @@
             <div class="card">
                 <div class="card-body" style="height: 130.5px">
                     <div class="form-group col-md">
+                        @if($btnUpdate)
                         <div class="input-group">
-                            <button style="margin-top: 19px;" wire:click='store'
-                                class="btn btn-primary btn-lg btn-block">Salvar</button>
+                            <button style="margin-top: 19px;" wire:click='update' class="btn btn-dark btn-lg btn-block">Atualizar</button>
                         </div>
+                        @else
+                            <div class="input-group">
+                                <button style="margin-top: 19px;" wire:click='store' class="btn btn-primary btn-lg btn-block">Salvar</button>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -99,8 +104,19 @@
                         <div class="col-lg m-b-md">
                             <p class="bold" style="font-size: 13px"><strong>Senha: </strong>{{ $item->ticket }}</p>
                             <hr style="border-top: 2px dotted #ccc">
-                            <span><i class="fas fa-user mr-2"></i>{{ $item->employee }}</span><br>
-                            <span><i class="fas fa-building mr-2"></i>{{ $item->company }}</span><br>
+                            <table>
+                                <tr>
+                                    <td style="width: 8cm;">
+                                        <span><i class="fas fa-user mr-2"></i>{{ $item->employee }}</span><br>
+                                        <span><i class="fas fa-building mr-2"></i>{{ $item->company }}</span><br>
+                                    </td>
+                                    <td>
+                                        <button wire:click='edit({{ $item->id }})'
+                                            class="btn btn-warning btn-lg btn-sm"><i
+                                                class="accordion-icon fas fa-pencil-alt"></i></button>
+                                    </td>
+                                </tr>
+                            </table>
                             <hr style="border-top: 2px dotted #ccc">
                         </div>
                     </div>

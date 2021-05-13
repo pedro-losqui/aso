@@ -37,9 +37,10 @@
                     <div class="card-body">
                         <div class="col-lg m-b-md">
                             <p class="bold" style="font-size: 13px"><strong>Senha: </strong>{{ $item->ticket }}</p>
-                            <hr>
-                            <span><i class="fas fa-user mr-2"></i>{{ $item->employee }}</span><br>
-                            <span><i class="fas fa-building mr-2"></i>{{ $item->company }}</span><br>
+                            <hr style="border-top: 2px dotted #ccc">
+                                <span><i class="fas fa-user mr-2"></i>{{ $item->employee }}</span><br>
+                                <span><i class="fas fa-building mr-2"></i>{{ $item->company }}</span><br>
+                            <hr style="border-top: 2px dotted #ccc">
                         </div>
                     </div>
                 </div>

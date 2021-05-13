@@ -12,9 +12,9 @@ class AttendanceView extends Component
 {
     use AuthorizesRequests;
 
-    public $busca, $user_id;
+    public $busca, $user_id, $btnUpdate;
 
-    public $company, $employee, $ticket;
+    public $company, $employee, $ticket, $ticket_id;
 
     protected $rules = [
         'user_id'   => 'required',
@@ -25,7 +25,8 @@ class AttendanceView extends Component
 
     public function mount()
     {
-       $this->user_id = Auth::user()->id;
+       $this->btnUpdate = false;
+       $this->user_id   = Auth::user()->id;
     }
 
     public function render()
@@ -56,11 +57,39 @@ class AttendanceView extends Component
         $this->default();
     }
 
+    public function edit($id)
+    {
+        $attendance = Attendance::find($id);
+        $this->btnUpdate    = true;
+        $this->ticket_id    = $attendance->id;
+        $this->company      = $attendance->company;
+        $this->employee     = $attendance->employee;
+        $this->ticket       = substr($attendance->ticket, 1, 4);
+    }
+
+    public function update()
+    {
+        $this->authorize('parecer.editar', Auth::user()->can('parecer.editar'));
+
+        $this->firstUppercase();
+        $this->checkTicket();
+
+        $data = $this->validate([
+            'user_id'   => 'required',
+            'company'   => 'required|string',
+            'employee'  => 'required|string',
+            'ticket'    => 'required|string',
+        ]);
+
+        $attendance = Attendance::find($this->ticket_id);
+        $attendance->update($data);
+        $this->default();
+    }
+
     public function firstUppercase()
     {
-        $this->employee = ucwords(strtolower($this->employee));
-        $this->company = ucwords(strtolower($this->company));
-        
+        $this->employee = ucwords(mb_strtolower($this->employee, 'UTF-8'));
+        $this->company = ucwords(mb_strtolower($this->company, 'UTF-8'));
     }
 
     public function checkTicket()
@@ -72,19 +101,18 @@ class AttendanceView extends Component
         } else {
             return $this->ticket = 'N'. $this->ticket;
         }
-        
     }
 
     public function default()
     {
-        $this->company  = '';
-        $this->employee = '';
-        $this->ticket   = '';
+        $this->btnUpdate = false;
+        $this->company   = '';
+        $this->employee  = '';
+        $this->ticket    = '';
     }
 
     public function clear()
     {
         $this->busca = '';
     }
-
 }
