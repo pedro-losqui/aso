@@ -69,7 +69,7 @@ class AttendanceView extends Component
 
     public function update()
     {
-        $this->authorize('parecer.editar', Auth::user()->can('parecer.editar'));
+        $this->authorize('resgistro.editar', Auth::user()->can('resgistro.editar'));
 
         $this->firstUppercase();
         $this->checkTicket();
