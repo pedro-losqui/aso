@@ -105,8 +105,8 @@ class AsofCreate extends Component
 
     public function uppercase()
     {
-        $this->workplace    = ucwords(mb_strtolower($this->workplace, 'UTF-8'));
-        $this->post         = ucwords(mb_strtolower($this->post, 'UTF-8'));
+        $this->workplace    = mb_strtoupper($this->workplace);
+        $this->post         = mb_strtoupper($this->post);
 
         $this->physicist    = ucwords(mb_strtolower($this->physicist, 'UTF-8'));
         $this->chemical     = ucwords(mb_strtolower($this->chemical, 'UTF-8'));
