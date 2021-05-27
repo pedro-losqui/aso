@@ -14,13 +14,14 @@ class MedicView extends Component
 
     public $busca = '', $user_id;
 
-    public $doctor_id, $name, $crm, $uf;
+    public $doctor_id, $name, $crm, $uf, $rqe = '';
 
     protected $rules = [
         'user_id'    => 'required',
         'name'       => 'required|string',
         'crm'        => 'required|string|unique:doctors',
         'uf'         => 'required|string',
+        'rqe'        => 'nullable',
     ];
 
     public function mount()
@@ -57,6 +58,7 @@ class MedicView extends Component
         $this->name        = $medic->name;
         $this->crm         = $medic->crm;
         $this->uf          = $medic->uf;
+        $this->rqe         = $medic->rqe;
     }
 
     public function update()
@@ -70,6 +72,7 @@ class MedicView extends Component
             'name'         => 'required|string',
             'crm'          => 'required|string|unique:doctors,crm, ' . $this->doctor_id,
             'uf'           => 'required|string',
+            'rqe'          => 'nullable',
         ]);
 
         $medic = Doctor::find($this->doctor_id);
@@ -99,6 +102,7 @@ class MedicView extends Component
         $this->name     = '';
         $this->crm      = '';
         $this->uf       = '';
+        $this->rqe      = '';
     }
 
     public function clear()

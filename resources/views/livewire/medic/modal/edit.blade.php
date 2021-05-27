@@ -62,6 +62,10 @@
                             <span class="badge badge-danger mt-2" style="font-size: 11px">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="">RQE</label>
+                        <input type="text" wire:model='rqe' class="form-control" placeholder="0000">
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">

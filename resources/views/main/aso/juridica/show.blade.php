@@ -277,7 +277,8 @@
                                                     <strong class="font-14">Médico(a) do Trabalho - Coord. do
                                                         PCMSO</strong><br>
                                                     Dr(a). {{ $aso->doctor->name }} <br>
-                                                    CRM: {{ $aso->doctor->crm }}/{{ $aso->doctor->uf }} <br>
+                                                    CRM: {{ $aso->doctor->crm }}/{{ $aso->doctor->uf }} @if ($aso->doctor->rqe) <strong>|</strong> RQE: {{ $aso->doctor->rqe }} @endif<br>
+                                                    
                                                 </address>
                                             @endif
                                         </div>
@@ -455,21 +456,28 @@
                                 <div class="col-md-6">
                                     <div class="float-left">
                                         <ul class="pl-3">
-                                            <li><strong>Afastamento pelo INSS..:
-                                                </strong> &nbsp; Sim (&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <li><strong>Afastamento pelo INSS
+                                                </strong> &nbsp;Sim (&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;
                                                 Não (&nbsp;&nbsp;&nbsp;&nbsp;)
+                                                <hr style="border-top: dotted 1px; width: 530px; margin: 0">
+                                                <br>
                                             </li>
-                                            <li><strong>Acidente de trabalho......:
-                                                </strong> &nbsp; Sim (&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <li><strong>Acidente de trabalho
+                                                </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sim (&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;
                                                 Não (&nbsp;&nbsp;&nbsp;&nbsp;)
+                                                <hr style="border-top: dotted 1px; width: 530px; margin: 0">
+                                                <br>
                                             </li>
-                                            <li><strong>Internação prévia...........:
-                                                </strong> &nbsp; Sim (&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <li><strong>Internação prévia
+                                                </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sim (&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;
                                                 Não (&nbsp;&nbsp;&nbsp;&nbsp;)
+                                                <hr style="border-top: dotted 1px; width: 530px; margin: 0">
+                                                <br>
                                             </li>
-                                            <li><strong>Cirurgia..........................:
-                                                </strong> &nbsp; Sim (&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <li><strong>Cirurgia
+                                                </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sim (&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;
                                                 Não (&nbsp;&nbsp;&nbsp;&nbsp;)
+                                                <hr style="border-top: dotted 1px; width: 530px; margin: 0">
                                             </li>
                                         </ul>
                                     </div>
