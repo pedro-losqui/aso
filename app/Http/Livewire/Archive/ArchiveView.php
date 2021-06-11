@@ -5,12 +5,13 @@ namespace App\Http\Livewire\Archive;
 use Livewire\Component;
 use App\Models\Input;
 use App\Models\Output;
+use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ArchiveView extends Component
 {
-    use AuthorizesRequests;
+    use AuthorizesRequests, WithPagination;
 
     public $start, $end;
 
