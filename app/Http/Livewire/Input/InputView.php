@@ -2,15 +2,15 @@
 
 namespace App\Http\Livewire\Input;
 
-use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Input;
+use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class InputView extends Component
 {
-    use AuthorizesRequests;
+    use AuthorizesRequests, WithPagination;
 
     public $busca, $user_id, $status = 'Alocado';
 

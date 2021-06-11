@@ -5,12 +5,13 @@ namespace App\Http\Livewire\Output;
 use Livewire\Component;
 use App\Models\Input;
 use App\Models\Output;
+use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class OutputView extends Component
 {
-    use AuthorizesRequests;
+    use AuthorizesRequests, WithPagination;
     
     public $busca, $user_id, $status = 'Liberado';
 

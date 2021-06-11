@@ -2,15 +2,15 @@
 
 namespace App\Http\Livewire\Attendance;
 
-use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Attendance;
+use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AttendanceView extends Component
 {
-    use AuthorizesRequests;
+    use AuthorizesRequests, WithPagination;
 
     public $busca, $user_id, $btnUpdate;
 

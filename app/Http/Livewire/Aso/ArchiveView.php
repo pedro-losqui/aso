@@ -2,11 +2,14 @@
 
 namespace App\Http\Livewire\Aso;
 
+use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Aso;
 
 class ArchiveView extends Component
 {
+    use WithPagination;
+
     public $start, $end;
 
     public $busca, $asoj, $asof, $aso = [];

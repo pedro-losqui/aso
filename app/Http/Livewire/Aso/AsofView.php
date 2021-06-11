@@ -2,14 +2,15 @@
 
 namespace App\Http\Livewire\Aso;
 
-use Livewire\Component;
 use App\Models\Aso;
+use Livewire\Component;
+use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AsofView extends Component
 {   
-    use AuthorizesRequests;
+    use AuthorizesRequests, WithPagination;
 
     public $busca;
 

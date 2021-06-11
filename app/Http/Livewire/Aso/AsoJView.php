@@ -4,12 +4,13 @@ namespace App\Http\Livewire\Aso;
 
 use App\Models\Aso;
 use Livewire\Component;
+use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AsojView extends Component
 {
-    use AuthorizesRequests;
+    use AuthorizesRequests, WithPagination;
     
     public $busca, $results, $employees;
 

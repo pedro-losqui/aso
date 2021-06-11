@@ -12,7 +12,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class UserView extends Component
 {
-    use AuthorizesRequests;
+    use AuthorizesRequests, WithPagination;
     
     public $busca = '', $reset = false;
 
