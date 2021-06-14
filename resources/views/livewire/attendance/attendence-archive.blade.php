@@ -40,6 +40,7 @@
                             <hr style="border-top: 2px dotted #ccc">
                                 <span><i class="fas fa-user mr-2"></i>{{ $item->employee }}</span><br>
                                 <span><i class="fas fa-building mr-2"></i>{{ $item->company }}</span><br>
+                                <span><i class="fas fa-calendar mr-2"></i>{{ $item->created_at->format('d/m/Y') }}</span><br>
                             <hr style="border-top: 2px dotted #ccc">
                         </div>
                     </div>
