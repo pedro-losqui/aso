@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Aso\Components;
 
 use Livewire\Component;
 use App\Models\Exam;
-use App\Models\ASo;
+use App\Models\Aso;
 
 class ExamCreate extends Component
 {
