@@ -36,11 +36,11 @@ class DashView extends Component
 
     public function atendimentos()
     {
-        $this->atendimentos = count(Aso::whereDay('created_at', date('d'))->get());
+        $this->atendimentos = count(Aso::whereDate('created_at', date('Y-m-d'))->get());
     }
 
     public function senha()
     {
-        $this->senhas = count(Attendance::whereDay('created_at', date('d'))->get());
+        $this->senhas = count(Attendance::whereDate('created_at', date('Y-m-d'))->get());
     }
 }

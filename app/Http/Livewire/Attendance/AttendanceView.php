@@ -34,7 +34,7 @@ class AttendanceView extends Component
         $this->authorize('resgistro.ver', Auth::user()->can('resgistro.ver'));
 
         return view('livewire.attendance.attendance-view', [
-            'records' => Attendance::whereDay('created_at', '=', date('d-m-Y'))
+            'records' => Attendance::whereDate('created_at', date('Y-m-d'))
             ->where(function($query) {
                 $query->orWhere('ticket', 'LIKE', "%{$this->busca}%")
                       ->orWhere('employee', 'LIKE', "%{$this->busca}%")
