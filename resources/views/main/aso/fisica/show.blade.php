@@ -20,9 +20,9 @@
                         <div class="card">
                             <div class="card-body invoice-head">
                                 <div class="row">
-                                    <div class="col-md-2 align-self-center">
+                                    <div class="col-md-2 align-self-left">
                                         <img src="{{ asset('assets/aso/image/logo-novo.png') }}"
-                                            class="logo-lg" height="60">
+                                            class="logo-lg" height="95">
                                     </div>
                                     <div class="col-md-10">
                                         <ul class="list-inline mb-0 contact-detail float-right">
@@ -299,9 +299,9 @@
                     <div class="card">
                         <div class="card-body invoice-head">
                             <div class="row">
-                                <div class="col-md-2 align-self-center">
-                                    <img src="{{ asset('assets/aso/image/logo-novo.png') }}"
-                                        class="logo-lg" height="60">
+                                <div class="col-md-2 align-self-left">
+                                    <img style="margin-left: 1.5cm" src="{{ asset('assets/aso/image/logo-novo.png') }}"
+                                        class="logo-lg" height="95">
                                 </div>
                                 <div class="col-md-10">
                                     <ul class="list-inline mb-0 contact-detail float-right">
