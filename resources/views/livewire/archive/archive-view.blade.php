@@ -90,6 +90,11 @@
                                 <li><i
                                         class="accordion-icon fas fa-calendar-alt"></i><span>{{ $item->created_at->format('d/m/Y') }}</span>
                                 </li>
+                                <hr>
+                                <li><i class="accordion-icon fas fa-id-badge"></i><span class="mt-3"><strong>Retirado por:
+                                </strong>{{ $item->responsible_name }}</span></li>
+                                <li><i class="accordion-icon fas fa-id-card"></i><span class="mt-3"><strong>RG:
+                                </strong>{{ $item->rg }}</span></li>
                             </ul>
                         </div>
                     </div>
